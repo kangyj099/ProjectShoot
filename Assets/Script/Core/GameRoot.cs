@@ -1,47 +1,35 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
+
+//전체 
 [DisallowMultipleComponent]
 public sealed class GameRoot : SingletonMono<GameRoot>
 {
-    [SerializeField] private GameObject playerPrefab;
-
-    private InputActionManager inputActionManager;
-
-    PlayerController playerInstance;
+    public SceneLoadManager SceneLoadManager { get; private set; }
+    public GameStateManager GameStateManager { get; private set; }
 
     protected override void OnAwake()
     {
-        inputActionManager = new InputActionManager();
-        inputActionManager.Init();
-        
-        if (playerPrefab == null)
-        {
-            Debug.LogError("Player Object is not assigned in the inspector.\n인스펙터에 플레이어 오브젝트를 등록해주세요!");
-            return;
-        }
+        InitManagers(); //매니저 컴포넌트
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        SpawnPlayer();
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-              
+
     }
 
-    private void SpawnPlayer()
+    private void InitManagers()
     {
-        var player = Instantiate<GameObject>(playerPrefab);
-        player.transform.position = Vector3.zero; // 초기 위치 설정
+        SceneLoadManager = GetComponentInChildren<SceneLoadManager>();
+        GameStateManager = GetComponentInChildren<GameStateManager>();
 
-        playerInstance = player.GetComponent<PlayerController>();
-        playerInstance.Init(inputActionManager);
+        // 매니저가 없을 경우 에러 메시지 출력
+        if (SceneLoadManager == null) Debug.LogError("SceneLoadManager를 찾을 수 없습니다!");
+        if (GameStateManager == null) Debug.LogError("GameStateManager를 찾을 수 없습니다!");
     }
 }

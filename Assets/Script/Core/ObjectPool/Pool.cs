@@ -25,6 +25,7 @@ public interface IPoolable
 
 public interface IPool
 {
+    IPoolable Get();
     void Release(IPoolable poolable);
     void Warmup(int initialSize);
     void Clear();
@@ -36,7 +37,7 @@ public class Pool<T> : IPool where T : Component, IPoolable
     private readonly T prefab;   // 풀링할 프리팹 리소스 원본
     private readonly Transform parent; // 풀링된 객체의 부모 Transform (옵션)
 
-    public T Get() => pool.Get();
+    public IPoolable Get() => pool.Get();
 
     public void Release(IPoolable item) => pool.Release((T)item);
 

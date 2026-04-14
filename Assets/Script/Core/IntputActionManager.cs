@@ -17,6 +17,7 @@ public class InputActionManager
 
         // 액션 맵 가져오기 (예: "Player"라는 이름의 액션맵)
         var playerMap = inputActions.Player;
+        playerMap.Enable(); // 액션맵 활성화
 
         // 액션 등록
         moveAction = playerMap.Move;
@@ -24,9 +25,6 @@ public class InputActionManager
         // 이벤트 연결
         moveAction.performed += OnMovePerformed;
         moveAction.canceled += OnMoveCanceled;
-
-        // 활성화
-        moveAction.Enable();
     }
 
     public void Release()

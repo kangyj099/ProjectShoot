@@ -23,6 +23,10 @@ public sealed class GameRoot : SingletonMono<GameRoot>
 
     }
 
+    protected override void OnDestroyed()
+    {
+    }
+
     private void InitManagers()
     {
         SceneLoadManager = GetComponentInChildren<SceneLoadManager>();

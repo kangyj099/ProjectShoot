@@ -20,9 +20,12 @@ public class SingletonMono<T> : MonoBehaviour where T : Component
 
     protected virtual void OnDestroy()
     {
+        OnDestroyed();
+
         if (Instance == this)
             Instance = null;
     }
 
     protected virtual void OnAwake() { }
+    protected virtual void OnDestroyed() { }
 }

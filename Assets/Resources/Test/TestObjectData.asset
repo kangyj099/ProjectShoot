@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TestObjectData
   m_EditorClassIdentifier: Assembly-CSharp::TestObjectData
   prefab: {fileID: 6448511931755447640, guid: 9927d7145e1aad04194d506c9e8eebc7, type: 3}
+  sprite: {fileID: -6141113305616064862, guid: d9075fa8692500c4891f1af63c426f32, type: 3}

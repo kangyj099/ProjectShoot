@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private bool moveLock = false;
 
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidBody2D;
 
     float MoveSpeed
     {
@@ -25,8 +25,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         // Essential component Setup
-        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-        if (null == rigidbody2D)
+        rigidBody2D = gameObject.GetComponent<Rigidbody2D>();
+        if (null == rigidBody2D)
         {
             Debug.LogError("{PlayerMovement} Rigidbody2D component not found on the GameObject.\n게임오브젝트에 Rigidbody2D 컴포넌트가 없습니다.");
         }
@@ -54,6 +54,6 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        rigidbody2D.transform.Translate(direction * moveSpeed * Time.fixedDeltaTime);
+        rigidBody2D.transform.Translate(direction * moveSpeed * Time.fixedDeltaTime);
     }
 }

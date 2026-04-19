@@ -3,7 +3,7 @@ using UnityEngine;
 
 //전체 
 [DisallowMultipleComponent]
-public sealed class GameRoot : SingletonMono<GameRoot>
+public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 {
     public SceneLoadManager SceneLoadManager { get; private set; }
     public GameStateManager GameStateManager { get; private set; }

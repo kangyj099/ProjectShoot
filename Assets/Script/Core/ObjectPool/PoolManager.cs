@@ -34,17 +34,29 @@ public class PoolManager : MonoBehaviour
         return (T)pool.Get();
     }
 
-    public void Release<T>(T item) where T : Component, IPoolable
+    public bool Release<T>(T item) where T : Component, IPoolable
     {
-        if (item.Pool != null)
+        if (item.Pool == null)
         {
-            item.Pool.Release(item);
+            Debug.LogError($"풀에 반환할 오브젝트는 반드시 IPoolable 컴포넌트를 가지고있어야 함.\n{item.name}은 IPoolable 컴포넌트가 아님");
+            return false;
         }
+
+        item.Pool.Release(item);
+        return true;
     }
 
-    public void Release(GameObject obj)
+    public bool Release(GameObject obj)
     {
-        obj.GetComponent<IPoolable>()?.Pool.Release(obj.GetComponent<IPoolable>());
+        var poolable = obj.GetComponent<IPoolable>();
+        if (poolable == null)
+        {
+            Debug.LogError($"풀에 반환할 오브젝트는 반드시 IPoolable 컴포넌트를 가지고있어야 함.\n{obj.name}은 IPoolable 컴포넌트가 아님");
+            return false;
+        }
+
+        poolable.Pool.Release(poolable);
+        return true;
     }
 
     private void OnDestroy()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6303603695448198067}
   - component: {fileID: 6448511931755447640}
   - component: {fileID: 2670724693955896311}
+  - component: {fileID: -4315696907050862511}
   m_Layer: 0
   m_Name: TestPoolableObject
   m_TagString: Untagged
@@ -104,3 +105,16 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-4315696907050862511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322747008308391261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c2b43738f61f349919482cb71b246d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectID
+  uniqueId: 13edd537-e124-4637-a679-534d05aa8b89

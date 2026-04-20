@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameSceneManager : MonoBehaviour
+public class GameSceneManager : SingletonMono<GameSceneManager>
 {
     [SerializeField] private GameObject playerPrefab;
 
@@ -20,7 +20,7 @@ public class GameSceneManager : MonoBehaviour
         SpawnPlayer();
     }
 
-    private void OnDestroy()
+    protected override void OnDestroyed()
     {
     }
 

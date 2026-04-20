@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 
-public class LoadingSceneManager : MonoBehaviour
+public class LoadingSceneManager : SingletonMono<LoadingSceneManager>
 {
     [SerializeField] private Slider progressBar; // 테스트용. 추후 수정
 

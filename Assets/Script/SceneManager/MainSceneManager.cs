@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainSceneManager : MonoBehaviour
+public class MainSceneManager : SingletonMono<MainSceneManager>
 {
     [Header("Buttons")]
     [SerializeField] private Button startButton;
@@ -33,7 +33,7 @@ public class MainSceneManager : MonoBehaviour
 #endif
     }
 
-    void OnDestroy()
+    protected override void OnDestroyed()
     {
         // 씬이 파괴될 때 리스너를 제거
         startButton.onClick.RemoveAllListeners();

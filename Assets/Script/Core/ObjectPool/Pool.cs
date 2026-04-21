@@ -51,7 +51,7 @@ public class Pool<T> : IPool where T : Component, IPoolable
             OnCreate,
             OnGet,
             OnRelease,
-            (poolableCompo) => GameObject.Destroy(poolableCompo.gameObject),
+            (poolableComp) => GameObject.Destroy(poolableComp.gameObject),
             collectionCheck: true,
             defaultCapacity: initialSize,
             maxSize: maxSize

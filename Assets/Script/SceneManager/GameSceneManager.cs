@@ -1,17 +1,18 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class GameSceneManager : SingletonMono<GameSceneManager>
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private ObjectData playerObjectData;
 
     PlayerController playerInstance;
     public ObjectSpawner Spawner { get; private set; }
 
     private void Awake()
     {
-        if (playerPrefab == null)
+        if (playerObjectData == null)
         {
-            Debug.LogError("Player Object is not assigned in the inspector.\n인스펙터에 플레이어 오브젝트를 등록해주세요!");
+            Debug.LogError("Player Object Data is not assigned in the inspector.\n인스펙터에 플레이어 오브젝트 데이터를 등록해주세요!");
             return;
         }
 
@@ -22,19 +23,18 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
     private void Start()
     {
-        SpawnPlayer();
+        SpawnPlayer().Forget();
     }
 
     protected override void OnDestroyed()
     {
     }
 
-    private void SpawnPlayer()
+    private async UniTaskVoid SpawnPlayer()
     {
-        var player = Instantiate<GameObject>(playerPrefab);
-        player.transform.position = Vector3.zero; // 초기 위치 설정
+        BaseObject playerObj = await Spawner.SpawnObject(playerObjectData,  Vector3.zero, Quaternion.identity, transform);
 
-        playerInstance = player.GetComponent<PlayerController>();
+        playerInstance = playerObj.GetComponent<PlayerController>();
         playerInstance.Init(GameRoot.Instance.InputActionManager);
     }
 }

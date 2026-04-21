@@ -30,4 +30,20 @@ public class ObjectSpawner : MonoBehaviour
 
         return poolable;
     }
+
+    public async UniTask<BaseObject> SpawnObject(ObjectData data, Vector3 position, Quaternion rotation, Transform parent)
+    {
+        BaseObject baseObj = Object.Instantiate(data.Prefab, position, rotation, parent);
+        if (baseObj == null)
+        {
+            Debug.LogError($"{data.Prefab.gameObject.name} 인스턴스 생성 실패");
+            return null;
+        }
+
+        data.Initialize(baseObj);   // 생성 후 초기화
+
+        baseObj.gameObject.SetActive(true);
+
+        return baseObj;
+    }
 }

@@ -1,8 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class TestPoolable : MonoBehaviour, IPoolable
+public class TestPoolable : BaseObject, IPoolable
 {
+    public override ObjectType GetObjectType() => ObjectType.None;
+
     public IPool Pool { get; set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
 

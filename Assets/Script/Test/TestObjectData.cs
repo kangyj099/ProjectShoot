@@ -9,7 +9,7 @@ public class TestObjectData : ObjectData
 {
     [SerializeField] private Sprite sprite;
 
-    public override void Initialize(IPoolable instance)
+    public override void Initialize(BaseObject instance)
     {
         Debug.Log("TestObjectData Initialize");
 

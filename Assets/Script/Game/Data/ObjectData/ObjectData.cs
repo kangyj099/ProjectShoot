@@ -2,41 +2,28 @@ using UnityEngine;
 
 public abstract class ObjectData : ScriptableObject
 {
-    [SerializeField] private Component prefab;   // 풀링할 프리팹 리소스 원본, IPoolable 컴포넌트 필수 포함
+    [SerializeField] private BaseObject prefab;   // 프리팹 리소스 원본, BaseObject 컴포넌트 필수 포함
+    private ObjectID objectID;
+
+    public BaseObject Prefab => prefab;
+    public string GetID => objectID.ID;
 
     private void OnValidate()
     {
-        if (prefab != null && prefab.GetComponent<IPoolable>() == null)
+        if (prefab != null && prefab.GetComponent<ObjectID>() == null)
         {
-            Debug.LogError($"{name}: IPoolable 컴포넌트가 없음");
-            prefab = null;
+            Debug.LogError($"{name}: ObjectID 컴포넌트가 없음");
         }
         else
         {
-            prefab = prefab.GetComponent<IPoolable>() as Component;
-            if (prefab == null)
-            {
-                Debug.LogError($"{name}: IPoolable이 컴포넌트가 아님");
-            }
+            objectID = prefab.GetComponent<ObjectID>();
         }
-    }
 
-    public Component Prefab
-    {
-        get => prefab;
-        set
+        if (prefab != null && prefab.GetComponent<BaseObject>() == null)
         {
-            if (value != null && value.GetComponent<IPoolable>() == null)
-            {
-                Debug.LogError($"{name}: IPoolable 컴포넌트가 없음");
-                prefab = null;
-            }
-            else
-            {
-                prefab = value;
-            }
+            Debug.LogError($"{name}: BaseObject 컴포넌트가 없음");
         }
     }
 
-    public abstract void Initialize(IPoolable instance);
+    public abstract void Initialize(BaseObject instance);
 }

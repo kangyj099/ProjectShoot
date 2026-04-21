@@ -7,12 +7,25 @@ public class ObjectSpawner : MonoBehaviour
 
     public async UniTask<IPoolable> SpawnPoolObject(ObjectData data, Vector3 position, Quaternion rotation)
     {
-        var poolable = poolManager.Get<IPoolable>(data);
-        data.Initialize(poolable);
+        // 객체에 필요한 리소스 로드
+        { }
 
-        var obj = (poolable as Component).gameObject;
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
+        // 데이터 기반 객체 생성, 초기화
+        var poolable = poolManager.Get<IPoolable>(data);
+        if (poolable == default)
+        {
+            return null;
+        }
+        
+        var baseObj = poolable as BaseObject;
+        if (baseObj == null)
+        {
+            return null;
+        }
+        data.Initialize(baseObj);
+
+        var obj = baseObj.gameObject;
+        obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
 
         return poolable;

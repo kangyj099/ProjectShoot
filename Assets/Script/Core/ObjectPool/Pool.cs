@@ -31,7 +31,7 @@ public interface IPool
     void Clear();
 }
 
-public class Pool<T> : IPool where T : Component, IPoolable
+public class Pool<T> : IPool where T : BaseObject, IPoolable
 {
     private readonly ObjectPool<T> pool;
     private readonly T prefab;   // 풀링할 프리팹 리소스 원본

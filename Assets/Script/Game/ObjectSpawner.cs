@@ -1,9 +1,9 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner
 {
-    [SerializeField] private PoolManager poolManager;
+    private PoolManager poolManager;
 
     public async UniTask<IPoolable> SpawnPoolObject(ObjectData data, Vector3 position, Quaternion rotation)
     {
@@ -45,5 +45,10 @@ public class ObjectSpawner : MonoBehaviour
         baseObj.gameObject.SetActive(true);
 
         return baseObj;
+    }
+
+    public void Init(PoolManager poolManager)
+    {
+        this.poolManager = poolManager;
     }
 }

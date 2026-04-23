@@ -2,8 +2,6 @@
 
 public class SkillManager : MonoBehaviour
 {
-    private PoolManager poolManager;
-
     public Transform muzzle;
     public LayerMask targetLayer;
 
@@ -20,12 +18,6 @@ public class SkillManager : MonoBehaviour
         if (currentSkill == null)
         {
             currentSkill = defaultSkill;
-        }
-
-        if (poolManager == null)
-        {
-            //마음엔 안 드는데 다음에 수정하자...
-            poolManager = GameObject.FindAnyObjectByType<PoolManager>();
         }
     }
 
@@ -61,7 +53,7 @@ public class SkillManager : MonoBehaviour
             Quaternion rotation = muzzle.rotation * Quaternion.Euler(0, 0, currentAngle);
 
             // PoolManager에서 객체 가져오기
-            var obj = poolManager?.Get<ProjectileObjectData>(data);
+            var obj = GameSceneManager.Instance.poolManager.Get<ProjectileObjectData>(data);
 
             if (obj != null)
             {

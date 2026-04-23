@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameSceneManager : SingletonMono<GameSceneManager>
 {
     [SerializeField] private ObjectData playerObjectData;
-
+    public PoolManager poolManager;
     PlayerController playerInstance;
     public ObjectSpawner Spawner { get; private set; }
 
@@ -16,7 +16,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
             return;
         }
 
-        PoolManager poolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
+        poolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
         Spawner = new();
         Spawner.Init(poolManager);
     }

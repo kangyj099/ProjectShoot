@@ -8,6 +8,7 @@ public class LinearSkillData : SkillData
     {
         if (instance is ProjectileObjectData bullet)
         {
+            bullet.SpriteRenderer.sprite = SkillImg;
             bullet.speed = speed;
             bullet.damage = damage;
             bullet.behavior = null;

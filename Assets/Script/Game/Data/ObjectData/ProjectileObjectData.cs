@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class ProjectileObjectData : BaseObject, IPoolable
 {
+    public SpriteRenderer SpriteRenderer { get; set; }
+
     public override ObjectType GetObjectType() => ObjectType.Projectile;
     public IPool Pool { get; set; }
 
@@ -12,6 +15,7 @@ public class ProjectileObjectData : BaseObject, IPoolable
 
     public float lifetime = 5f; //탄환 유지 시간
     private float timer;
+
 
     public void OnGet() => timer = 0f;
 
@@ -45,7 +49,7 @@ public class ProjectileObjectData : BaseObject, IPoolable
         if (((1 << other.gameObject.layer) & targetLayer) != 0)
         {
             // 코드 수정 필요
-            // 플레이어 & 적일때만 충돌하도록
+            // 플레이어 & 적일때만 충돌하도록 (총알일 경우 제외)
             // 대미지 적용 식 연동되도록
             behavior?.OnHit(this, other);
             Release();

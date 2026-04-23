@@ -13,6 +13,7 @@ public abstract class SkillData : ObjectData
     public string skillName;
 
     [Header("Common Setting")]
+    public Sprite SkillImg;
     public float speed; // 탄환 속도
     public float fireRate; // 탄 발사 속도
     public int damage;

@@ -56,6 +56,7 @@ public class SkillManager : MonoBehaviour
 
             // PoolManager에서 객체 가져오기
             var obj = poolManager?.Get<ProjectileObjectData>(data);
+
             if (obj != null)
             {
                 obj.transform.position = muzzle.position;
@@ -65,7 +66,10 @@ public class SkillManager : MonoBehaviour
                 data.Initialize(obj);
 
                 // 공통 레이어 주입
-                if (obj is ProjectileObjectData p) p.targetLayer = targetLayer;
+                if (obj is ProjectileObjectData p)
+                {
+                    p.targetLayer = targetLayer;
+                }
             }
         }
     }

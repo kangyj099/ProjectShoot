@@ -3,10 +3,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 
-public class SceneLoadManager : MonoBehaviour
+public class SceneLoadManager
 {
     private int nextScene; //다음 씬
     private GameState nextState; //상태머신 다음 상태 정의
+
+    public void Init()
+    {
+        nextScene = 0;
+        nextState = GameState.MainMenu;
+    }
+
+    public void Release()
+    {
+        // 현재 특별히 처리할 내용은 없으나 형식 통일을 위한 함수
+    }
 
     public void LoadScene(SceneType nextScene, GameState nextState)
     {

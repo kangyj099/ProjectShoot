@@ -1,8 +1,18 @@
 using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager
 {
     public GameState CurrentState { get; private set; }
+
+    public void Init()
+    {
+        CurrentState = GameState.MainMenu; // 첫 화면은 메인임.
+    }
+
+    public void Release()
+    {
+        // 현재 특별히 처리할 내용은 없으나 형식 통일을 위한 함수
+    }
 
     public void ChangeState(GameState newState)
     {

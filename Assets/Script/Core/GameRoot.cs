@@ -5,8 +5,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 {
-    public SceneLoadManager SceneLoadManager { get; private set; }
     public GameStateManager GameStateManager { get; private set; }
+
+    public SceneLoadManager SceneLoadManager { get; private set; }
 
     public InputActionManager InputActionManager { get; private set; }
 
@@ -28,21 +29,23 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 
     protected override void OnDestroyed()
     {
+        GameStateManager?.Release();
+        SceneLoadManager?.Release();
         InputActionManager?.Release();
     }
 
     private void InitManagers()
     {
-        // 컴포넌트 캐싱
-        SceneLoadManager = GetComponentInChildren<SceneLoadManager>();
-        GameStateManager = GetComponentInChildren<GameStateManager>();
-
-        // 매니저가 없을 경우 에러 메시지 출력
-        if (SceneLoadManager == null) Debug.LogError("SceneLoadManager를 찾을 수 없습니다!");
-        if (GameStateManager == null) Debug.LogError("GameStateManager를 찾을 수 없습니다!");
+        // 컴포넌트 캐싱 - 인스펙터에서 확인하는 게 좋은 내용은 이쪽으로
 
 
         // 스크립트 초기화
+        GameStateManager = new GameStateManager();
+        GameStateManager.Init();
+
+        SceneLoadManager = new SceneLoadManager();
+        SceneLoadManager.Init();
+
         InputActionManager = new InputActionManager();
         InputActionManager.Init();
     }

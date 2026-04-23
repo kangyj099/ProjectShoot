@@ -17,8 +17,7 @@ public abstract class SkillData : ObjectData
     public float speed; // 탄환 속도
     public float fireRate; // 탄 발사 속도
     public int damage;
-    public int ShotCount; // 탄 몇 줄?
+    public int shotCount; // 탄 몇 줄?
+    public float shotInterval; // 탄 간격?
     public float spreadAngle; //퍼지는 각도
-
-    public Sprite sprite;
 }

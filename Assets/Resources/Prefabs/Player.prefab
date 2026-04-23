@@ -194,8 +194,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
-  defaultSkill: {fileID: 11400000, guid: a5f376d3f58e6b642958b426fd5ca814, type: 2}
-  currentSkill: {fileID: 11400000, guid: a5f376d3f58e6b642958b426fd5ca814, type: 2}
+  defaultSkill: {fileID: 11400000, guid: 7e5ef72676951c947a4fb749141671b3, type: 2}
+  currentSkill: {fileID: 11400000, guid: 7e5ef72676951c947a4fb749141671b3, type: 2}
   isPlayer: 1
 --- !u!1 &8615991536868920241
 GameObject:

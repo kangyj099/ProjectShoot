@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f90893259e418644394b6e9cce1c95dc, type: 3}
-  m_Name: TestNormalBullet
+  m_Name: TestBulletAsset
   m_EditorClassIdentifier: Assembly-CSharp::LinearSkillData
-  prefab: {fileID: -1702422906638404648, guid: 75f7d849590e86540b9d4c91e195e234, type: 3}
+  prefab: {fileID: 0}
   skillIdx: 0
-  skillName: "\uAE30\uBCF8"
-  speed: 10
-  fireRate: 0.2
-  damage: 1
-  ShotCount: 1
+  skillName: 
+  SkillImg: {fileID: 0}
+  speed: 0
+  fireRate: 0
+  damage: 0
+  shotCount: 0
+  shotInterval: 0
   spreadAngle: 0
-  sprite: {fileID: 0}

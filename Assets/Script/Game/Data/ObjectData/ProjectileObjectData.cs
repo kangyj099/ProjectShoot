@@ -24,6 +24,11 @@ public class ProjectileObjectData : BaseObject, IPoolable
         behavior = null; // 추가 행동 초기화
     }
 
+    private void Awake()
+    {
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void Update()
     {
         // 행동 지침이 있으면 그에 따르고, 없으면 직진

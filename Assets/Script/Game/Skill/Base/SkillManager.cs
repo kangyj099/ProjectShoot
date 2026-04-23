@@ -46,11 +46,17 @@ public class SkillManager : MonoBehaviour
     public void Fire(SkillData data)
     {
         if (data == null || data.Prefab == null) return;
-
-        float startAngle = -(data.spreadAngle * (data.ShotCount - 1)) / 2f;
-
-        for (int i = 0; i < data.ShotCount; i++)
+        
+        float startOffset = -(data.shotInterval * (data.shotCount - 1)) / 2f;
+        float startAngle = -(data.spreadAngle * (data.shotCount - 1)) / 2f;
+        
+        for (int i = 0; i < data.shotCount; i++)
         {
+            // 오프셋
+            float currentOffset = startOffset + (data.shotInterval * i);
+            Vector3 spawnPosition = muzzle.position + (muzzle.right * currentOffset);
+
+            // 각도
             float currentAngle = startAngle + (data.spreadAngle * i);
             Quaternion rotation = muzzle.rotation * Quaternion.Euler(0, 0, currentAngle);
 
@@ -59,7 +65,7 @@ public class SkillManager : MonoBehaviour
 
             if (obj != null)
             {
-                obj.transform.position = muzzle.position;
+                obj.transform.position = spawnPosition;
                 obj.transform.rotation = rotation;
 
                 // 스탯 주입 (데이터 자체가 behavior를 가질 경우 자동으로 주입됨)

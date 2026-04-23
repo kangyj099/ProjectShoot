@@ -1,0 +1,16 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "NewNormalBullet", menuName = "Scriptable Objects/ObjectData/NewNormalBullet")]
+
+public class LinearSkillData : SkillData
+{
+    public override void Initialize(BaseObject instance)
+    {
+        if (instance is ProjectileObjectData bullet)
+        {
+            bullet.speed = speed;
+            bullet.damage = damage;
+            bullet.behavior = null;
+        }
+    }
+}

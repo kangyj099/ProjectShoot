@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90893259e418644394b6e9cce1c95dc, type: 3}
+  m_Name: TestNormalBullet
+  m_EditorClassIdentifier: Assembly-CSharp::LinearSkillData
+  prefab: {fileID: -1702422906638404648, guid: 75f7d849590e86540b9d4c91e195e234, type: 3}
+  skillIdx: 0
+  skillName: "\uAE30\uBCF8"
+  speed: 10
+  fireRate: 0.2
+  damage: 1
+  ShotCount: 1
+  spreadAngle: 0
+  sprite: {fileID: 0}

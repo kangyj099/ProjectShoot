@@ -51,3 +51,22 @@ public static class SkillConfig
     public const float MAX_SKILL_SHOTINTERVAL = float.MaxValue;
 }
 #endregion
+
+#region playerprefs
+public static class PlayerPrefsKeword
+{
+    public const string bgmVolume = "BgmVolume";
+    public const string sfxVolume = "SfxVolume";
+}
+#endregion
+
+#region 사운드
+public static class SoundConfig
+{
+    public const string BgmRoot = "Sounds/BGM";
+    public const string SfxRoot = "Sounds/SFX";
+
+    public const string MixerBgmVol = "BgmVol";
+    public const string MixerSfxVol = "BgmVol";
+}
+#endregion

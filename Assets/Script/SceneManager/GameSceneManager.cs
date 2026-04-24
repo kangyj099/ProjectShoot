@@ -17,6 +17,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         }
 
         poolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
+        poolManager.gameObject.transform.SetParent(transform);
         Spawner = new();
         Spawner.Init(poolManager);
     }

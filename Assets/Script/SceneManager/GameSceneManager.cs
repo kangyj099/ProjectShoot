@@ -8,7 +8,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
     PlayerController playerInstance;
     public ObjectSpawner Spawner { get; private set; }
 
-    private void Awake()
+    protected override void OnAwake()
     {
         if (playerObjectData == null)
         {
@@ -18,8 +18,16 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
         poolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
         poolManager.gameObject.transform.SetParent(transform);
+        if (poolManager == null)
+        {
+            Debug.LogError("PoolManager initialization failed.\nPoolManager 초기화에 실패했습니다.");
+        }
         Spawner = new();
         Spawner.Init(poolManager);
+        if (Spawner == null)
+        {
+            Debug.LogError("ObjectSpawner initialization failed.\nObjectSpawner 초기화에 실패했습니다.");
+        }
     }
 
     private void Start()

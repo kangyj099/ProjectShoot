@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90893259e418644394b6e9cce1c95dc, type: 3}
   m_Name: TestBulletAsset
   m_EditorClassIdentifier: Assembly-CSharp::LinearSkillData
-  prefab: {fileID: 0}
-  skillIdx: 0
+  prefab: {fileID: -1702422906638404648, guid: 75f7d849590e86540b9d4c91e195e234, type: 3}
   skillName: 
-  SkillImg: {fileID: 0}
-  speed: 0
-  fireRate: 0
-  damage: 0
-  shotCount: 0
-  shotInterval: 0
+  SkillImg: {fileID: -1227564231286400416, guid: 596ce50cd8f39b54eb17c0bd92c59d1b, type: 3}
+  speed: 10
+  fireRate: 0.2
+  shotCount: 1
+  shotInterval: 1
   spreadAngle: 0
+  damage: 0

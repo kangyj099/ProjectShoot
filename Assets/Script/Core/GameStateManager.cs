@@ -7,6 +7,7 @@ public class GameStateManager
     public void Init()
     {
         CurrentState = GameState.MainMenu; // 첫 화면은 메인임.
+        EnterState(CurrentState);
     }
 
     public void Release()
@@ -35,6 +36,8 @@ public class GameStateManager
         switch (state)
         {
             case GameState.MainMenu:
+                // 임시코드
+                GameRoot.Instance.SoundManager.PlayBGM("TestBgm");
                 break;
 
             case GameState.Loading:

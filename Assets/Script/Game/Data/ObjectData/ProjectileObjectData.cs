@@ -49,6 +49,13 @@ public class ProjectileObjectData : BaseObject, IPoolable
         }
     }
 
+    private void OnBecameInvisible()
+    {
+        // 화면 밖에 나가면 풀로 돌려놓기
+        // 추후 수정 가능
+        Release();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (((1 << other.gameObject.layer) & targetLayer) != 0)

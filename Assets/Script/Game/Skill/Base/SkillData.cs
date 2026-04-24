@@ -23,17 +23,10 @@ public abstract class SkillData : ObjectData
     //최소최대치 보정
     public void ClampValue()
     {
-        speed = System.Math.Max(0, speed);
-        speed = System.Math.Min(speed, SkillConfig.MAX_SKILL_SPEED);
-
-        fireRate = System.Math.Max(0, fireRate);
-        fireRate = System.Math.Min(fireRate, SkillConfig.MAX_SKILL_FIRERATE);
-
-        shotCount = System.Math.Max(0, shotCount);
-        shotCount = System.Math.Min(shotCount, SkillConfig.MAX_SKILL_SHOTCOUNT);
-
-        shotInterval = System.Math.Max(0, shotInterval);
-        shotInterval = System.Math.Min(shotInterval, SkillConfig.MAX_SKILL_SHOTINTERVAL);
+        speed = Mathf.Clamp(speed, 0, SkillConfig.MAX_SKILL_SPEED);
+        fireRate = Mathf.Clamp(fireRate, 0, SkillConfig.MAX_SKILL_FIRERATE);
+        shotCount = Mathf.Clamp(shotCount, 0, SkillConfig.MAX_SKILL_SHOTCOUNT);
+        shotInterval = Mathf.Clamp(shotInterval, 0, SkillConfig.MAX_SKILL_SHOTINTERVAL);
 
         damage = System.Math.Min(damage, float.MaxValue);
     }

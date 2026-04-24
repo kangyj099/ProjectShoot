@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class SkillHandler : MonoBehaviour
 {
     public Transform muzzle;
     public LayerMask targetLayer;

@@ -1,6 +1,7 @@
 // 게임 전체에서 사용할 정의를 모아두는 스크립트
 // define이 많아지면 해당 스크립트를 기능별로 나눠야 할 지도.
 
+#region 씬
 public enum GameState
 {
     Init,       // 게임 초기화 (앱 켜짐)
@@ -15,3 +16,28 @@ public enum SceneType
     Loading,    // 1, 로딩씬
     Game,       // 2, 게임 플레이 씬
 }
+#endregion
+
+#region 오브젝트
+public enum ObjectType
+{
+    None = -1,
+    Player,     // Actor
+    Monster,    // Actor
+    Projectile,
+    Item,
+    Claw,
+
+    Count // enum 개수 세는 용도, 실제로는 사용하지 않음
+}
+
+public enum ItemType
+{
+
+}
+
+public enum CollisionType
+{
+
+}
+#endregion

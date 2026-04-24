@@ -6,6 +6,8 @@ public class LinearSkillData : SkillData
 {
     public override void Initialize(BaseObject instance)
     {
+        ClampValue();
+
         if (instance is ProjectileObjectData bullet)
         {
             bullet.SpriteRenderer.sprite = SkillImg;

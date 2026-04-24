@@ -41,3 +41,13 @@ public enum CollisionType
 
 }
 #endregion
+
+#region 스킬
+public static class SkillConfig
+{
+    public const float MAX_SKILL_SPEED = float.MaxValue;
+    public const float MAX_SKILL_FIRERATE = float.MaxValue;
+    public const int MAX_SKILL_SHOTCOUNT = 3;
+    public const float MAX_SKILL_SHOTINTERVAL = float.MaxValue;
+}
+#endregion

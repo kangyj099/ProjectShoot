@@ -9,7 +9,7 @@ public class ProjectileObjectData : BaseObject, IPoolable
     public IPool Pool { get; set; }
 
     public float speed;
-    public int damage;
+    public float damage;
     public LayerMask targetLayer;
     public ISkillBehavior behavior; // 탄환 추가 행동
 

@@ -29,7 +29,7 @@ public class ProjectileObjectData : BaseObject, IPoolable
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // 행동 지침이 있으면 그에 따르고, 없으면 직진
         if (behavior != null)
@@ -38,11 +38,11 @@ public class ProjectileObjectData : BaseObject, IPoolable
         }
         else
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(Vector3.up * speed * Time.fixedDeltaTime);
         }
 
         // 시간 끝나면 풀에 돌려놓기
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
         if (timer >= lifetime)
         {
             Release();

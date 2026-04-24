@@ -88,7 +88,7 @@ public class Pool<T> : IPool where T : BaseObject, IPoolable
 
     public void Warmup(int initialSize)
     {
-        if (initialSize <= 0 || initialSize > pool.CountAll)
+        if (initialSize <= 0)
         {
             return;
         }

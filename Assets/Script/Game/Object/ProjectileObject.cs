@@ -24,7 +24,7 @@ public class ProjectileObject : BaseObject, IPoolable
         behavior = null; // 추가 행동 초기화
     }
 
-    private void Awake()
+    protected override void OnAwake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }

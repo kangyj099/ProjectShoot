@@ -21,7 +21,7 @@ public class TestPoolable : BaseObject, IPoolable
     }
 
     // 유니티 생명주기 메서드
-    private void Awake()
+    protected override void OnAwake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }

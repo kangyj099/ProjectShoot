@@ -38,7 +38,13 @@ public enum ItemType
 
 public enum CollisionType
 {
+    None = -1,
+    Damage,
+    Buff,
+    Debuff,
+    Capture,
 
+    Count // enum 개수 세는 용도, 실제로는 사용하지 않음
 }
 #endregion
 

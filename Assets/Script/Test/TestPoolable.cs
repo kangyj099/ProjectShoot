@@ -21,8 +21,13 @@ public class TestPoolable : BaseObject, IPoolable
     }
 
     // 유니티 생명주기 메서드
-    private void Awake()
+    protected override void OnAwake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    protected override void InitCollisionEntity()
+    {
+        // TestPoolable은 충돌 처리가 필요 없으므로 빈 구현
     }
 }

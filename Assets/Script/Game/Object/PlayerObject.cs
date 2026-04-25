@@ -6,4 +6,9 @@ public class PlayerObject : ActorObject
     {
         return ObjectType.Player;
     }
+
+    protected override void InitCollisionEntity()
+    {
+        base.InitCollisionEntity();
+    }
 }

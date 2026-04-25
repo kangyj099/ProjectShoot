@@ -25,4 +25,9 @@ public class TestPoolable : BaseObject, IPoolable
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
+
+    protected override void InitCollisionEntity()
+    {
+        // TestPoolable은 충돌 처리가 필요 없으므로 빈 구현
+    }
 }

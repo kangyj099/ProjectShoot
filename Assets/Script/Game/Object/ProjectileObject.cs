@@ -29,6 +29,10 @@ public class ProjectileObject : BaseObject, IPoolable
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    protected override void InitCollisionEntity()
+    {
+    }
+
     void FixedUpdate()
     {
         // 행동 지침이 있으면 그에 따르고, 없으면 직진

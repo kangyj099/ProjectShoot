@@ -53,7 +53,7 @@ public class SkillHandler : MonoBehaviour
             Quaternion rotation = muzzle.rotation * Quaternion.Euler(0, 0, currentAngle);
 
             // PoolManager에서 객체 가져오기
-            var obj = GameSceneManager.Instance.poolManager.Get<ProjectileObjectData>(data);
+            var obj = GameSceneManager.Instance.poolManager.Get<ProjectileObject>(data);
 
             if (obj != null)
             {
@@ -64,7 +64,7 @@ public class SkillHandler : MonoBehaviour
                 data.Initialize(obj);
 
                 // 공통 레이어 주입
-                if (obj is ProjectileObjectData p)
+                if (obj is ProjectileObject p)
                 {
                     p.targetLayer = targetLayer;
                 }

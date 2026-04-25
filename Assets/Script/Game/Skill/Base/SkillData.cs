@@ -2,8 +2,8 @@
 
 public interface ISkillBehavior
 {
-    void Tick(ProjectileObjectData proj); // 매 프레임 실행할 로직
-    void OnHit(ProjectileObjectData proj, Collider2D other); // 충돌 시 로직
+    void Tick(ProjectileObject proj); // 매 프레임 실행할 로직
+    void OnHit(ProjectileObject proj, Collider2D other); // 충돌 시 로직
 }
 
 public abstract class SkillData : ObjectData

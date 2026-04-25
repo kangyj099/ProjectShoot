@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class ProjectileObjectData : BaseObject, IPoolable
+public class ProjectileObject : BaseObject, IPoolable
 {
     public SpriteRenderer SpriteRenderer { get; set; }
 

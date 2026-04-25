@@ -8,7 +8,7 @@ public class LinearSkillData : SkillData
     {
         ClampValue();
 
-        if (instance is ProjectileObjectData bullet)
+        if (instance is ProjectileObject bullet)
         {
             bullet.SpriteRenderer.sprite = SkillImg;
             bullet.speed = speed;

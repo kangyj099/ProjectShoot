@@ -20,6 +20,12 @@ public abstract class SkillData : ObjectData
     public float spreadAngle; //퍼지는 각도
     public float damage;
 
+    [Header("Collision Settings")]
+    [Tooltip("Documents/기능설명/터널링문제.ppt 참고.\n체크하면 서클캐스트, 체크하지 않으면 레이캐스트")]
+    public bool useCircleCast = false;
+    [Tooltip("서클캐스트 선택 시에만 이용: 반지름")]
+    public float colliderRadius = 0.1f;
+
     //최소최대치 보정
     public void ClampValue()
     {
@@ -29,5 +35,7 @@ public abstract class SkillData : ObjectData
         shotInterval = Mathf.Clamp(shotInterval, 0, SkillConfig.MAX_SKILL_SHOTINTERVAL);
 
         damage = System.Math.Min(damage, float.MaxValue);
+
+        colliderRadius = Mathf.Clamp(colliderRadius, 0.1f, float.MaxValue);
     }
 }

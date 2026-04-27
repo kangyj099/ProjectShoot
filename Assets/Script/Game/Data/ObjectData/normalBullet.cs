@@ -14,6 +14,9 @@ public class LinearSkillData : SkillData
             bullet.speed = speed;
             bullet.damage = damage;
             bullet.behavior = null;
+
+            bullet.useCircleCast = useCircleCast;
+            bullet.colliderRadius = colliderRadius;
         }
     }
 }

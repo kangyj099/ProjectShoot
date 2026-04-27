@@ -15,6 +15,7 @@ public class ProjectileObject : BaseObject, IPoolable
 
     public bool useCircleCast = false;
     public float colliderRadius = 0.1f;
+    public bool drawDebugGizmo = false;
 
     public float lifetime = 5f; //탄환 유지 시간
     private float timer;
@@ -112,6 +113,32 @@ public class ProjectileObject : BaseObject, IPoolable
         else
         {
             transform.Translate(Vector3.up * moveDist);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!drawDebugGizmo) return;
+
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.up;
+        float moveDist = speed * Time.fixedDeltaTime;
+        Vector3 nextPos = transform.position + direction * moveDist;
+
+        if (useCircleCast)
+        {
+            // 서클캐스트 시각화
+            Gizmos.DrawWireSphere(transform.position, colliderRadius);
+            Gizmos.DrawWireSphere(nextPos, colliderRadius);
+
+            Vector3 rightOffset = transform.right * colliderRadius;
+            Gizmos.DrawLine(transform.position + rightOffset, nextPos + rightOffset);
+            Gizmos.DrawLine(transform.position - rightOffset, nextPos - rightOffset);
+        }
+        else
+        {
+            // 레이캐스트 시각화
+            Gizmos.DrawLine(transform.position, nextPos);
         }
     }
 }

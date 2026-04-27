@@ -17,6 +17,7 @@ public class LinearSkillData : SkillData
 
             bullet.useCircleCast = useCircleCast;
             bullet.colliderRadius = colliderRadius;
+            bullet.drawDebugGizmo = drawDebugGizmo;
         }
     }
 }

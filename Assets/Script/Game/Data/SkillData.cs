@@ -25,6 +25,8 @@ public abstract class SkillData : ObjectData
     public bool useCircleCast = false;
     [Tooltip("서클캐스트 선택 시에만 이용: 반지름")]
     public float colliderRadius = 0.1f;
+    [Tooltip("레이캐스트/서클캐스트 시각화.")]
+    public bool drawDebugGizmo = false;
 
     //최소최대치 보정
     public void ClampValue()

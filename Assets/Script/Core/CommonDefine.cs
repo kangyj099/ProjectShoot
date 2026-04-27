@@ -7,7 +7,9 @@ public enum GameState
     Init,       // 게임 초기화 (앱 켜짐)
     MainMenu,   // MainScene
     Loading,    // LoadingScene
-    Playing    // GameScene
+    Playing,    // GameScene
+
+    Count // enum 개수 세는 용도, 실제로는 사용하지 않음
 }
 
 public enum SceneType
@@ -15,6 +17,8 @@ public enum SceneType
     Main,       // 0, 게임 시작 씬
     Loading,    // 1, 로딩씬
     Game,       // 2, 게임 플레이 씬
+
+    Count // enum 개수 세는 용도, 실제로는 사용하지 않음
 }
 #endregion
 

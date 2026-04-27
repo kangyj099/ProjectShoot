@@ -56,18 +56,6 @@ public class ProjectileObject : BaseObject, IPoolable
         Release();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (((1 << other.gameObject.layer) & targetLayer) != 0)
-        {
-            // 코드 수정 필요
-            // 플레이어 & 적일때만 충돌하도록 (총알일 경우 제외)
-            // 대미지 적용 식 연동되도록
-            behavior?.OnHit(this, other);
-            Release();
-        }
-    }
-
     public void Release()
     {
         if (Pool != null) Pool.Release(this);
@@ -94,8 +82,18 @@ public class ProjectileObject : BaseObject, IPoolable
             // 혹시 테스트 후 이상하게 보이면 수정해야 함
             transform.position = useCircleCast ? (Vector3)hit.centroid : (Vector3)hit.point;
 
-            // 충돌 이후 작업
+            // 태그 확인
+            if (!hit.collider.CompareTag("여기태그수정후수정필요"))
+            {
+                Move(moveDist);
+            }
+            else
+            {
+                // 충돌했다고 전달
 
+                // 총알 반환
+                Release();
+            }
         }
         else
         {

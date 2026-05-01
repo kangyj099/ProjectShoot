@@ -7,19 +7,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TestObjectData", menuName = "Scriptable Object/Test/TestObjectData", order = 1)]
 public class TestObjectData : ObjectData
 {
-    [SerializeField] private Sprite sprite;
-
-    public override void Initialize(BaseObject instance)
-    {
-        Debug.Log("TestObjectData Initialize");
-
-        TestPoolable testPoolable = instance as TestPoolable;
-        if (testPoolable == null)
-        {
-            Debug.LogError("오브젝트에 있는 IPoolable 스크립트가 TestPoolable이어야 합니다");
-            return;
-        }
-
-        testPoolable.SpriteRenderer.sprite = sprite;
-    }
+    public Sprite sprite;
 }

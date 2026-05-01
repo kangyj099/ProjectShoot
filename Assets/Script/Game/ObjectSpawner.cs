@@ -22,7 +22,7 @@ public class ObjectSpawner
         {
             return null;
         }
-        data.Initialize(baseObj);
+        baseObj.InitData(data);
 
         var obj = baseObj.gameObject;
         obj.transform.SetPositionAndRotation(position, rotation);
@@ -40,7 +40,7 @@ public class ObjectSpawner
             return null;
         }
 
-        data.Initialize(baseObj);   // 생성 후 초기화
+        baseObj.InitData(data);   // 생성 후 초기화
 
         baseObj.gameObject.SetActive(true);
 

@@ -20,6 +20,25 @@ public class ProjectileObject : BaseObject, IPoolable
     public float lifetime = 5f; //탄환 유지 시간
     private float timer;
 
+    public override void InitData(ObjectData data)
+    {
+        LinearSkillData skillData = data as LinearSkillData;
+        if (skillData == null)
+        {
+            Debug.LogError("기본 총알에는 LinearSkillData가 필요합니다. 엉뚱한 데이터로 초기화를 시도하고있습니다..");
+        }
+
+        skillData.ClampValue();
+
+        if (skillData.SkillImg != null) SpriteRenderer.sprite = skillData.SkillImg;
+        speed = skillData.speed;
+        damage = skillData.damage;
+        behavior = null;
+
+        useCircleCast = skillData.useCircleCast;
+        colliderRadius = skillData.colliderRadius;
+        drawDebugGizmo = skillData.drawDebugGizmo;
+    }
 
     public void OnGet() => timer = 0f;
 

@@ -61,7 +61,7 @@ public class SkillHandler : MonoBehaviour
                 obj.transform.rotation = rotation;
 
                 // 스탯 주입 (데이터 자체가 behavior를 가질 경우 자동으로 주입됨)
-                data.Initialize(obj);
+                obj.InitData(data);
 
                 // 공통 레이어 주입
                 if (obj is ProjectileObject p)

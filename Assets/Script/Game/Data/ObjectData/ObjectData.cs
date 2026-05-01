@@ -24,6 +24,4 @@ public abstract class ObjectData : ScriptableObject
             Debug.LogError($"{name}: BaseObject 컴포넌트가 없음");
         }
     }
-
-    public abstract void Initialize(BaseObject instance);
 }

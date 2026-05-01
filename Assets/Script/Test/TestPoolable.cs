@@ -9,7 +9,7 @@ public class TestPoolable : BaseObject, IPoolable
     public SpriteRenderer SpriteRenderer { get; private set; }
 
     // BaseObject 추상 메서드 구현
-    public override void InitData(ObjectData data)
+    public override void SetData(ObjectData data)
     {
         Debug.Log("TestObjectData Initialize");
 

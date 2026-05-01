@@ -7,7 +7,7 @@ public abstract class BaseObject : MonoBehaviour
     public CollisionEntity CollisionEntity { get; private set; }
     public virtual bool IsActor => false;   // ActorObject 자식 클래스에서만 true로 오버라이드
 
-    public abstract void InitData(ObjectData instance);
+    public abstract void SetData(ObjectData instance);
 
     private void Awake()
     {

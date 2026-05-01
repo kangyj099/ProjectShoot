@@ -20,7 +20,7 @@ public class ProjectileObject : BaseObject, IPoolable
     public float lifetime = 5f; //탄환 유지 시간
     private float timer;
 
-    public override void InitData(ObjectData data)
+    public override void SetData(ObjectData data)
     {
         LinearSkillData skillData = data as LinearSkillData;
         if (skillData == null)

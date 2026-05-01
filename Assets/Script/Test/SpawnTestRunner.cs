@@ -24,7 +24,7 @@ public class SpawnTestRunner : MonoBehaviour
         if (activeObjects.Count > 0)
         {
             var obj = activeObjects[0];
-            poolManager.Release<TestPoolable>(obj);
+            obj.Release();
             activeObjects.RemoveAt(0);
         }
     }

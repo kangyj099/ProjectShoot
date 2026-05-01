@@ -4,6 +4,16 @@ public static class PoolExtentions
 {
     public static void Release(this IPoolable poolable)
     {
-        poolable.Pool.Release(poolable);
+        if (poolable.Pool != null)
+        {
+            poolable.Pool.Release(poolable);
+        }
+        else
+        {
+            if (poolable is Component comp)
+            {
+                GameObject.Destroy(comp.gameObject);
+            }
+        }
     }
 }

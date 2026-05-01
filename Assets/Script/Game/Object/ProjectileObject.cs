@@ -64,7 +64,7 @@ public class ProjectileObject : BaseObject, IPoolable
         timer += Time.fixedDeltaTime;
         if (timer >= lifetime)
         {
-            Release();
+            this.Release();
         }
     }
 
@@ -72,12 +72,7 @@ public class ProjectileObject : BaseObject, IPoolable
     {
         // 화면 밖에 나가면 풀로 돌려놓기
         // 추후 수정 가능
-        Release();
-    }
-
-    public void Release()
-    {
-        if (Pool != null) Pool.Release(this);
+        this.Release();
     }
 
     private void CheckCollision()
@@ -111,7 +106,7 @@ public class ProjectileObject : BaseObject, IPoolable
                 // 충돌했다고 전달
 
                 // 총알 반환
-                Release();
+                this.Release();
             }
         }
         else

@@ -12,7 +12,7 @@ public interface ICollsionPaticipant
 public interface ICollisionSender : ICollsionPaticipant
 {
     // 충돌 이벤트 발신할 때 동작
-    ICollisionContext MakeCollisionContext(Collision2D collision);
+    ICollisionContext MakeCollisionContext(in HitInfo hitInfo);
 }
 
 

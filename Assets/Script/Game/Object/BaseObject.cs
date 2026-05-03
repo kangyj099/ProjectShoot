@@ -37,6 +37,7 @@ public abstract class BaseObject : MonoBehaviour
     {
         collision.gameObject.TryGetComponent<BaseObject>(out var target);
 
-        CollisionEntity.SendCollisionContext(target, collision); // 충돌 컨텍스트 생성 후 전송
+        HitInfo hitInfo = new HitInfo(collision, this, target);
+        CollisionEntity.SendCollisionContext(in hitInfo); // 충돌 컨텍스트 생성 후 전송
     }
 }

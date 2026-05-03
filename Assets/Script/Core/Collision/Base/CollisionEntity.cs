@@ -42,20 +42,17 @@ public class CollisionEntity
         return true;
     }
 
-    public bool SendCollisionContext(BaseObject target, Collision2D collision)
+    public bool SendCollisionContext(in HitInfo hitInfo)
     {
-        if (target == null)
-            throw new ArgumentNullException(nameof(target));
-
-        if (collision == null)
-            throw new ArgumentNullException(nameof(collision));
+        if (hitInfo.Target == null)
+            throw new ArgumentNullException(nameof(hitInfo.Target));
 
         foreach (var senderList in collisionSenders)
         {
             foreach (var sender in senderList)
             {
-                var context = sender.MakeCollisionContext(collision);
-                target.CollisionEntity.ReceiveCollisionContext(context);
+                var context = sender.MakeCollisionContext(in hitInfo);
+                hitInfo.Target.CollisionEntity.ReceiveCollisionContext(context);
             }
         }
 

@@ -4,6 +4,7 @@
 public class ProjectileObject : BaseObject, IPoolable
 {
     public SpriteRenderer SpriteRenderer { get; set; }
+    private DamageSender damageSender;
 
     public override ObjectType GetObjectType() => ObjectType.Projectile;
     public IPool Pool { get; set; }
@@ -38,6 +39,11 @@ public class ProjectileObject : BaseObject, IPoolable
         useCircleCast = skillData.useCircleCast;
         colliderRadius = skillData.colliderRadius;
         drawDebugGizmo = skillData.drawDebugGizmo;
+
+        if (damageSender)
+        {
+            damageSender.SetDamage((int)damage);
+        }
     }
 
     public void OnGet() => timer = 0f;
@@ -50,10 +56,15 @@ public class ProjectileObject : BaseObject, IPoolable
     protected override void OnAwake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        TryGetComponent<DamageSender>(out damageSender);
     }
 
     protected override void InitCollisionEntity()
     {
+        if (damageSender)
+        {
+            CollisionEntity.AddCollisionSender(damageSender);
+        }
     }
 
     void FixedUpdate()
@@ -96,18 +107,15 @@ public class ProjectileObject : BaseObject, IPoolable
             // 혹시 테스트 후 이상하게 보이면 수정해야 함
             transform.position = useCircleCast ? (Vector3)hit.centroid : (Vector3)hit.point;
 
-            // 태그 확인
-            if (!hit.collider.CompareTag("여기태그수정후수정필요"))
+            // 충돌했다고 전달
+            if (hit.transform.gameObject.TryGetComponent<BaseObject>(out BaseObject target))
             {
-                Move(moveDist);
+                HitInfo hitInfo = new HitInfo(hit, this, target);
+                CollisionEntity.SendCollisionContext(hitInfo);
             }
-            else
-            {
-                // 충돌했다고 전달
 
-                // 총알 반환
-                this.Release();
-            }
+            // 총알 반환
+            this.Release();
         }
         else
         {

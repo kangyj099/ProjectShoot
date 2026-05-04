@@ -64,6 +64,7 @@ public class SkillHandler : MonoBehaviour
                 obj.SetData(data);
 
                 // 공통 레이어 주입
+                obj.gameObject.layer = gameObject.layer;
                 if (obj is ProjectileObject p)
                 {
                     p.targetLayer = targetLayer;

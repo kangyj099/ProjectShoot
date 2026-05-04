@@ -28,6 +28,7 @@ public class CollisionEntity
         }
 
         collisionSenders[(int)collisionSender.CollType].Add(collisionSender);
+        Debug.Log($"{owner.gameObject.name}에 충돌센더 {collisionSender.CollType} 부착");
 
         return true;
     }
@@ -39,6 +40,8 @@ public class CollisionEntity
             return false;
         }
         collisionReceivers[(int)collisionReceiver.CollType].Add(collisionReceiver);
+
+        Debug.Log($"{owner.gameObject.name}에 충돌리시버 {collisionReceiver.CollType} 부착");
         return true;
     }
 
@@ -53,6 +56,7 @@ public class CollisionEntity
             {
                 var context = sender.MakeCollisionContext(in hitInfo);
                 hitInfo.Target.CollisionEntity.ReceiveCollisionContext(context);
+                Debug.Log($"{hitInfo.Target.gameObject.name}에게 {context.CollType}충돌 전달");
             }
         }
 
@@ -72,6 +76,7 @@ public class CollisionEntity
             {
                 Debug.LogError($"충돌 이벤트 처리 실패 - Receiver: {receiver}, Context: {context}");
             }
+            Debug.Log($"{owner.name} 충돌 이벤트 {context.CollType}수신 처리");
         }
 
         return true;

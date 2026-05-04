@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerObject : ActorObject
 {
-    public override void SetData(ObjectData instance)
+    public override void SetData(ObjectData data)
     { }
 
     public override ObjectType GetObjectType()

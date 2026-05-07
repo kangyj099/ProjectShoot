@@ -79,13 +79,6 @@ public class ProjectileObject : BaseObject, IPoolable
         }
     }
 
-    private void OnBecameInvisible()
-    {
-        // 화면 밖에 나가면 풀로 돌려놓기
-        // 추후 수정 가능
-        this.Release();
-    }
-
     private void CheckCollision()
     {
         float moveDist = speed * Time.fixedDeltaTime;

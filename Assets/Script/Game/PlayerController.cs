@@ -30,6 +30,14 @@ public class PlayerController : MonoBehaviour
         InputSetting(inputActionManager);
     }
 
+    public void SetMovementArea(MovementArea area)
+    {
+        if (area != null)
+        {
+            movement.SetArea(area);
+        }
+    }
+
     void OnDestroy()
     {
     }

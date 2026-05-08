@@ -6,6 +6,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
     public CameraManager CameraManager { get; private set; }
 
     [SerializeField] private ObjectData playerObjectData;
+    [SerializeField] private Stage currentStage;
     public PoolManager PoolManager { get; private set; }
     public ObjectSpawner Spawner { get; private set; }
 
@@ -57,5 +58,6 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
         playerInstance = playerObj.GetComponent<PlayerController>();
         playerInstance.Init(GameRoot.Instance.InputActionManager);
+        playerInstance.SetMovementArea(currentStage.PlayerMovementArea);
     }
 }

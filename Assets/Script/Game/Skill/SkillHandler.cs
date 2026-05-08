@@ -53,12 +53,11 @@ public class SkillHandler : MonoBehaviour
             Quaternion rotation = muzzle.rotation * Quaternion.Euler(0, 0, currentAngle);
 
             // PoolManager에서 객체 가져오기
-            var obj = GameSceneManager.Instance.poolManager.Get<ProjectileObject>(data);
+            var obj = GameSceneManager.Instance.PoolManager.Get<ProjectileObject>(data);
 
             if (obj != null)
             {
-                obj.transform.position = spawnPosition;
-                obj.transform.rotation = rotation;
+                obj.transform.SetPositionAndRotation(spawnPosition, rotation);
 
                 // 스탯 주입 (데이터 자체가 behavior를 가질 경우 자동으로 주입됨)
                 obj.SetData(data);

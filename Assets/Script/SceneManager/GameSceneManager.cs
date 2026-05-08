@@ -6,9 +6,10 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
     public CameraManager CameraManager { get; private set; }
 
     [SerializeField] private ObjectData playerObjectData;
-    public PoolManager poolManager;
-    PlayerController playerInstance;
+    public PoolManager PoolManager { get; private set; }
     public ObjectSpawner Spawner { get; private set; }
+
+    private PlayerController playerInstance;
 
     protected override void OnAwake()
     {
@@ -22,14 +23,14 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
             return;
         }
 
-        poolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
-        poolManager.gameObject.transform.SetParent(transform);
-        if (poolManager == null)
+        PoolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
+        PoolManager.gameObject.transform.SetParent(transform);
+        if (PoolManager == null)
         {
             Debug.LogError("PoolManager initialization failed.\nPoolManager 초기화에 실패했습니다.");
         }
         Spawner = new();
-        Spawner.Init(poolManager);
+        Spawner.Init(PoolManager);
         if (Spawner == null)
         {
             Debug.LogError("ObjectSpawner initialization failed.\nObjectSpawner 초기화에 실패했습니다.");

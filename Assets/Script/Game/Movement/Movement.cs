@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private bool moveLock = false;
 
     private Rigidbody2D rigidBody2D;
+    private MovementArea movementArea;
 
     float MoveSpeed
     {
@@ -20,6 +21,10 @@ public class Movement : MonoBehaviour
     public void SetDirection(Vector2 direction)
     {
         this.direction = direction;
+    }
+    public void SetArea(MovementArea area)
+    {
+        movementArea = area;
     }
 
     private void Awake()
@@ -55,5 +60,15 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         rigidBody2D.transform.Translate(direction * moveSpeed * Time.fixedDeltaTime);
+        AreaClamp();
+    }
+
+    private void AreaClamp()
+    {
+        if (movementArea != null)
+        {
+            Vector3 clampedPosition = movementArea.Clamp(transform.position);
+            transform.position = clampedPosition;
+        }
     }
 }

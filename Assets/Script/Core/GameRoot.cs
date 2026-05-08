@@ -13,8 +13,6 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 
     public SoundManager SoundManager { get; private set; }
 
-    public CameraManager CameraManager { get; private set; }
-
     protected override void OnAwake()
     {
         InitManagers(); //매니저 초기화
@@ -36,17 +34,11 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
         SceneLoadManager?.Release();
         InputActionManager?.Release();
         SoundManager?.Release();
-        CameraManager?.Release();
     }
 
     private void InitManagers()
     {
         // 컴포넌트 캐싱 - 인스펙터에서 확인하는 게 좋은 내용은 이쪽으로
-
-        CameraManager = GetComponentInChildren<CameraManager>();
-        if (CameraManager == null) Debug.LogError("CameraManager를 찾을 수 없습니다!");
-        else CameraManager.Init();
-
         SoundManager = GetComponentInChildren<SoundManager>();
         if (SoundManager == null) Debug.LogError("SoundManager를 찾을 수 없습니다!");
         else SoundManager.Init();

@@ -24,7 +24,7 @@ public class SceneLoadManager
         this.nextScene = (int)nextScene;
         this.nextState = nextState;
 
-        SceneManager.LoadScene((int)SceneType.Loading);
+        GameRoot.Instance.GameStateManager.ChangeState(GameState.Loading);
     }
 
     public async UniTask LoadTargetSceneAsync(Action<float> onProgressUpdate)

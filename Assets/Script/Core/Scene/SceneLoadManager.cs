@@ -10,7 +10,7 @@ public class SceneLoadManager
 
     public void Init()
     {
-        nextScene = 0;
+        nextScene = (int)SceneType.Main;
         nextState = GameState.MainMenu;
     }
 

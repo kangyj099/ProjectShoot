@@ -30,7 +30,7 @@ public class PoolManager : MonoBehaviour
             GameObject poolParent = new(data.Prefab.gameObject.name + " Pool");
             poolParent.transform.SetParent(transform);
 
-            var componentType = poolable.GetType();
+            Type componentType = poolable.GetType();
 
             // 풀 타입 만들기 (Pool<componentType>)이라는 타입을 생성
             var poolType = typeof(Pool<>).MakeGenericType(componentType);
@@ -63,7 +63,8 @@ public class PoolManager : MonoBehaviour
             return false;
         }
 
-        poolable.Pool.Release(poolable);
+        poolable.Release();
+
         return true;
     }
 

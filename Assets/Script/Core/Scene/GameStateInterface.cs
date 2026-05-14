@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public interface IState
-{
-    void OnEnter();
-    void OnExit();
-}
-
 // 메인 화면 상태
 public class MainState : IState
 {
     public void OnEnter() { }
+
+    public void OnUpdate() { }
 
     public void OnExit() { }
 }
@@ -24,6 +20,8 @@ public class LoadingState : IState
         SceneManager.LoadScene((int)SceneType.Loading);
     }
 
+    public void OnUpdate() { }
+
     public void OnExit() { }
 }
 
@@ -35,6 +33,8 @@ public class PlayingState : IState
         Time.timeScale = 1.0f;
     }
 
+    public void OnUpdate() { }
+
     public void OnExit() { }
 }
 
@@ -45,6 +45,8 @@ public class PauseState : IState
     {
         Time.timeScale = 0f;
     }
+
+    public void OnUpdate() { }
 
     public void OnExit()
     {

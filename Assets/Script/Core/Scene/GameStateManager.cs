@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateManager
+public class GameStateManager : StateMachine<GameState, GameStateManager>
 {
-    private Dictionary<GameState, IState> states = new Dictionary<GameState, IState>();
-    private IState currentState;
+    public GameStateManager() : base(null) { }
 
     public void Init()
     {
@@ -15,19 +14,5 @@ public class GameStateManager
 
         // 처음 상태는 메인임
         ChangeState(GameState.MainMenu);
-    }
-
-    public void Release()
-    {
-        states.Clear();
-    }
-
-    public void ChangeState(GameState newState)
-    {
-        Debug.Log($"상태 머신 동작: {currentState} -> {newState}");
-
-        currentState?.OnExit();
-        currentState = states[newState];
-        currentState.OnEnter();
     }
 }

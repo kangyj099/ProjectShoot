@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class ProjectileObject : BaseObject, IPoolable
@@ -50,6 +51,8 @@ public class ProjectileObject : BaseObject, IPoolable
 
     public void OnRelease()
     {
+        transform.DOKill(); // 모든 연산 강제 종료
+
         behavior = null; // 추가 행동 초기화
     }
 

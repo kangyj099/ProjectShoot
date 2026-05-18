@@ -28,6 +28,9 @@ public class HomingSkillData : SkillData
             float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             Quaternion targetRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
 
+            // 바로 직전 프레임에 생성되어 돌고 있던 회전 트윈을 완전히 Kill하여 중첩을 방지
+            projectile.transform.DOKill();
+
             projectile.transform.DORotateQuaternion(targetRotation, 1f / rotationSpeed)
                 .SetUpdate(UpdateType.Fixed) // FixedUpdate 타이밍과 동기화
                 .SetEase(rotationEase);

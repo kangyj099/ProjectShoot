@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 
 //전체 
@@ -16,6 +17,7 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
     protected override void OnAwake()
     {
         InitManagers(); //매니저 초기화
+        InitDOTween();
     }
 
     private void Start()
@@ -52,5 +54,13 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 
         InputActionManager = new InputActionManager();
         InputActionManager.Init();
+    }
+
+    private void InitDOTween()
+    {
+        DOTween.Init(recycleAllByDefault: true, useSafeMode: true, LogBehaviour.ErrorsOnly);
+
+        // Warmup 코드: 트윈용 메모리 풀 용량 확보
+        DOTween.SetTweensCapacity(tweenersCapacity: 200, sequencesCapacity: 50);
     }
 }

@@ -2,10 +2,10 @@
 
 public interface ISkillBehavior
 {
-    void Tick(ProjectileObject proj); // 매 프레임 실행할 로직
+    void Tick(ProjectileObject proj, float moveDist);
 }
 
-public abstract class SkillData : ObjectData
+public abstract class SkillData : ObjectData, ISkillBehavior
 {
     [Header("management")]
     public string skillName;
@@ -26,6 +26,8 @@ public abstract class SkillData : ObjectData
     public float colliderRadius = 0.1f;
     [Tooltip("레이캐스트/서클캐스트 시각화.")]
     public bool drawDebugGizmo = false;
+
+    public abstract void Tick(ProjectileObject proj, float moveDist);
 
     //최소최대치 보정
     public void ClampValue()

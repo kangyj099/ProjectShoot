@@ -23,10 +23,10 @@ public class ProjectileObject : BaseObject, IPoolable
 
     public override void SetData(ObjectData data)
     {
-        LinearSkillData skillData = data as LinearSkillData;
-        if (skillData == null)
+        if (data is not SkillData skillData)
         {
-            Debug.LogError("기본 총알에는 LinearSkillData가 필요합니다. 엉뚱한 데이터로 초기화를 시도하고있습니다..");
+            Debug.LogError($"{name}에 올바르지 않은 ObjectData({data?.GetType()})가 주입되었습니다.");
+            return;
         }
 
         skillData.ClampValue();
@@ -34,7 +34,7 @@ public class ProjectileObject : BaseObject, IPoolable
         if (skillData.SkillImg != null) SpriteRenderer.sprite = skillData.SkillImg;
         speed = skillData.speed;
         damage = skillData.damage;
-        behavior = null;
+        behavior = skillData;
 
         useCircleCast = skillData.useCircleCast;
         colliderRadius = skillData.colliderRadius;
@@ -56,7 +56,7 @@ public class ProjectileObject : BaseObject, IPoolable
     protected override void OnAwake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        TryGetComponent<DamageSender>(out damageSender);
+        if (damageSender == null) TryGetComponent(out damageSender);
     }
 
     protected override void InitCollisionEntity()
@@ -118,15 +118,13 @@ public class ProjectileObject : BaseObject, IPoolable
 
     private void Move(float moveDist)
     {
-        // 행동 지침이 있으면 그에 따르고, 없으면 직진
-        if (behavior != null)
+        if (behavior == null)
         {
-            behavior.Tick(this);
+            Debug.LogError($"이게 어떻게 가능한 진 몰라도 {this.name} 탄환 behavior이 null입니다!");
+            return;
         }
-        else
-        {
-            transform.Translate(Vector3.up * moveDist);
-        }
+
+        behavior.Tick(this, moveDist);
     }
 
     private void OnDrawGizmos()

@@ -20,6 +20,9 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
     {
         InitManagers(); //매니저 초기화
         InitDOTween();
+
+        // 초기화가 끝났다면 메인 상태로 넘겨주자.
+        GameStateManager.ChangeState(GameState.MainMenu);
     }
 
     private void Start()

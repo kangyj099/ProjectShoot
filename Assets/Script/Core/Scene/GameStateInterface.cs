@@ -1,14 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// 메인 화면 상태
-public class MainState : IState
+// 게임 실행시
+public class InitState : IState
 {
     public void OnEnter() { }
 
     public void OnUpdate() { }
 
     public void OnExit() { }
+}
+
+// 메인 화면 상태
+public class MainState : IState
+{
+    public void OnEnter() 
+    {
+        _ = GameRoot.Instance.UIManager.ShowSceneUI<UI_MainScene>();
+        GameRoot.Instance.SoundManager.PlayBGM("TestBgm"); // 추후 수정
+    }
+
+    public void OnUpdate() { }
+
+    public void OnExit() 
+    {
+        GameRoot.Instance.UIManager.ClearSceneUI();
+    }
 }
 
 // 메인 화면 상태

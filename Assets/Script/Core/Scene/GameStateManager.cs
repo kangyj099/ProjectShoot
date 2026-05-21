@@ -7,12 +7,13 @@ public class GameStateManager : StateMachine<GameState, GameStateManager>
 
     public void Init()
     {
+        states[GameState.Init] = new InitState();
         states[GameState.MainMenu] = new MainState();
         states[GameState.Loading] = new LoadingState();
         states[GameState.Playing] = new PlayingState();
         states[GameState.Pause] = new PauseState();
 
-        // 처음 상태는 메인임
-        ChangeState(GameState.MainMenu);
+        // 처음 상태는 Init!
+        ChangeState(GameState.Init);
     }
 }

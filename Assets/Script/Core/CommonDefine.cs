@@ -4,9 +4,10 @@
 #region 씬
 public enum GameState
 {
-    MainMenu,   // MainScene
-    Loading,    // LoadingScene
-    Playing,    // GameScene
+    Init,       // 초기화
+    MainMenu,
+    Loading,
+    Playing,
     Pause,      // 일시정지
 
     Count // enum 개수 세는 용도, 실제로는 사용하지 않음

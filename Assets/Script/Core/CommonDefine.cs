@@ -4,9 +4,10 @@
 #region 씬
 public enum GameState
 {
-    MainMenu,   // MainScene
-    Loading,    // LoadingScene
-    Playing,    // GameScene
+    Init,       // 초기화
+    MainMenu,
+    Loading,
+    Playing,
     Pause,      // 일시정지
 
     Count // enum 개수 세는 용도, 실제로는 사용하지 않음
@@ -59,6 +60,24 @@ public static class SkillConfig
     public const float MAX_SKILL_FIRERATE = float.MaxValue;
     public const int MAX_SKILL_SHOTCOUNT = 3;
     public const float MAX_SKILL_SHOTINTERVAL = float.MaxValue;
+}
+#endregion
+
+#region UI
+public enum UIEvent
+{
+    Click,
+    Drag,
+
+    count
+}
+
+public static class UIDefine
+{
+    public const int canvasSortingOrder = 10;
+    public const string uiRootName = "UI_Root";
+    public const string sceneUIPrefebsPath = "Prefabs/UI/Scene/";
+    public const string popupUIPrefebsPath = "Prefabs/UI/Popup/";
 }
 #endregion
 

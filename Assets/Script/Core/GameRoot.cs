@@ -12,6 +12,8 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 
     public InputActionManager InputActionManager { get; private set; }
 
+    public UIManager UIManager { get; private set; }
+
     public SoundManager SoundManager { get; private set; }
 
     protected override void OnAwake()
@@ -35,12 +37,13 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
         GameStateManager?.Release();
         SceneLoadManager?.Release();
         InputActionManager?.Release();
+        UIManager?.Release();
         SoundManager?.Release();
     }
 
     private void InitManagers()
     {
-        // 컴포넌트 캐싱 - 인스펙터에서 확인하는 게 좋은 내용은 이쪽으로
+        // 컴포넌트 캐싱
         SoundManager = GetComponentInChildren<SoundManager>();
         if (SoundManager == null) Debug.LogError("SoundManager를 찾을 수 없습니다!");
         else SoundManager.Init();
@@ -54,6 +57,9 @@ public sealed class GameRoot : SingletonMonoDontDestroy<GameRoot>
 
         InputActionManager = new InputActionManager();
         InputActionManager.Init();
+
+        UIManager = new UIManager();
+        UIManager.Init();
     }
 
     private void InitDOTween()

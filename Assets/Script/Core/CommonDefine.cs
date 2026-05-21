@@ -62,6 +62,24 @@ public static class SkillConfig
 }
 #endregion
 
+#region UI
+public enum UIEvent
+{
+    Click,
+    Drag,
+
+    count
+}
+
+public static class UIDefine
+{
+    public const int canvasSortingOrder = 10;
+    public const string uiRootName = "UI_Root";
+    public const string sceneUIPrefebsPath = "Prefabs/UI/Scene/";
+    public const string popupUIPrefebsPath = "Prefabs/UI/Popup/";
+}
+#endregion
+
 #region playerprefs
 public static class PlayerPrefsKeword
 {

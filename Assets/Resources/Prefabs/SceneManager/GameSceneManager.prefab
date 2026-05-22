@@ -63,6 +63,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5226134028288239939}
+  - {fileID: 8044393878671470028}
   - {fileID: 6916043374268204424}
   - {fileID: 7046918459209662827}
   m_Father: {fileID: 0}
@@ -82,6 +83,7 @@ MonoBehaviour:
   playerObjectData: {fileID: 11400000, guid: 0c9dc32d2a127a14882e7139fb8009bd, type: 2}
   currentStage: {fileID: 7853665455017358895}
   playerSpawnTransform: {fileID: 7046918459209662827}
+  monsterSpawner: {fileID: 904220573345644074}
 --- !u!114 &2573690661088601451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +97,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectID
   uniqueId: d408f8db-f76b-4f75-b526-fc32ae3fa267
+--- !u!1 &4059143656968828348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8044393878671470028}
+  - component: {fileID: 904220573345644074}
+  m_Layer: 0
+  m_Name: MonsterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8044393878671470028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059143656968828348}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6768180646367775317}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904220573345644074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059143656968828348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81a3f3fcc41abc45a6449c73b709664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterSpawner
+  testMonsterPrefabs: {fileID: 11400000, guid: 0d9bd2e1a797daf418b4eaabb7945bc7, type: 2}
 --- !u!1 &9008208626670959106
 GameObject:
   m_ObjectHideFlags: 0

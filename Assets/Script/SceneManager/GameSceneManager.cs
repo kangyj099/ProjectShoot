@@ -8,6 +8,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
     [SerializeField] private ObjectData playerObjectData;
     [SerializeField] private Stage currentStage;
     [SerializeField] private Transform playerSpawnTransform;
+    [SerializeField] private MonsterSpawner monsterSpawner;
     public PoolManager PoolManager { get; private set; }
     public ObjectSpawner Spawner { get; private set; }
 
@@ -50,6 +51,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
     private void Start()
     {
+        SetStage(currentStage);
         SpawnPlayer().Forget();
     }
 
@@ -64,5 +66,13 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         playerInstance = playerObj.GetComponent<PlayerController>();
         playerInstance.Init(GameRoot.Instance.InputActionManager);
         playerInstance.SetMovementArea(currentStage.PlayerMovementArea);
+    }
+
+    private void SetStage(Stage stage)
+    {
+        currentStage = stage;
+
+        playerInstance?.SetMovementArea(currentStage.PlayerMovementArea);
+        monsterSpawner.SetTransformGroups(currentStage.MonsterSpawnTransformGroups);
     }
 }

@@ -7,6 +7,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
     [SerializeField] private ObjectData playerObjectData;
     [SerializeField] private Stage currentStage;
+    [SerializeField] private Transform playerSpawnTransform;
     public PoolManager PoolManager { get; private set; }
     public ObjectSpawner Spawner { get; private set; }
 
@@ -22,6 +23,10 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         {
             Debug.LogError("Player Object Data is not assigned in the inspector.\n인스펙터에 플레이어 오브젝트 데이터를 등록해주세요!");
             return;
+        }
+        if (playerSpawnTransform == null)
+        {
+            Debug.LogError("Player Spawn Transform is not assigned in the inspector.\n인스펙터에 플레이어 스폰 트랜스폼을 등록해주세요!");
         }
 
         PoolManager = new GameObject("PoolManager").AddComponent<PoolManager>();
@@ -54,7 +59,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
     private async UniTaskVoid SpawnPlayer()
     {
-        BaseObject playerObj = await Spawner.SpawnObject(playerObjectData,  Vector3.zero, Quaternion.identity, transform);
+        BaseObject playerObj = await Spawner.SpawnObject(playerObjectData, playerSpawnTransform.position, playerSpawnTransform.rotation, transform);
 
         playerInstance = playerObj.GetComponent<PlayerController>();
         playerInstance.Init(GameRoot.Instance.InputActionManager);

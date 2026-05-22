@@ -50,6 +50,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
 
     private void Start()
     {
+        SetStage(currentStage);
         SpawnPlayer().Forget();
     }
 
@@ -64,5 +65,12 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         playerInstance = playerObj.GetComponent<PlayerController>();
         playerInstance.Init(GameRoot.Instance.InputActionManager);
         playerInstance.SetMovementArea(currentStage.PlayerMovementArea);
+    }
+
+    private void SetStage(Stage stage)
+    {
+        currentStage = stage;
+
+        playerInstance?.SetMovementArea(currentStage.PlayerMovementArea);
     }
 }

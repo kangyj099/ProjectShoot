@@ -6,4 +6,6 @@ public class Stage : MonoBehaviour
     public MovementArea PlayerMovementArea { get; private set; }
     [field: SerializeField]
     public MovementArea MonsterMovementArea { get; private set; }
+    [field: SerializeField]
+    public SpawnTransformGroups MonsterSpawnTransformGroups { get; private set; }
 }

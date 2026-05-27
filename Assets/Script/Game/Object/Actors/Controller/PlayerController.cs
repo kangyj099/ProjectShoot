@@ -3,13 +3,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Movement))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : ActorController
 {
-    private Movement movement;
-
-    void Awake()
+    protected override void OnAwake()
     {
-        movement = gameObject.GetComponent<Movement>();
+        base.OnAwake();
+
         if (movement == null)
         {
             Debug.LogError($"Movement component not found on {gameObject.name}.\n{gameObject} 객체에 Movement컴포넌트가 없습니다.");

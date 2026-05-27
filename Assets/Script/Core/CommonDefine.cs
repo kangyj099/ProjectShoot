@@ -36,6 +36,16 @@ public enum ObjectType
     Count // enum 개수 세는 용도, 실제로는 사용하지 않음
 }
 
+public enum ActorState
+{
+    None = -1,
+    Idle,
+    Move,
+    Die,
+
+    Count // enum 개수 세는 용도, 실제로는 사용하지 않음
+}
+
 public enum ItemType
 {
 

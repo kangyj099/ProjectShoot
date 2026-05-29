@@ -29,7 +29,7 @@ public class PlayerController : ActorController
         InputSetting(inputActionManager);
     }
 
-    public void SetMovementArea(MovementArea area)
+    public void SetMovementArea(MoveArea area)
     {
         if (area != null)
         {

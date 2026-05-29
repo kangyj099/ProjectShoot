@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class MovementArea : MonoBehaviour
+public class MoveArea : MonoBehaviour
 {
     public BoxCollider2D AreaCollider { get; private set; }
     [SerializeField] private float boundaryMargin;

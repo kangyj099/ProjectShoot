@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7862067865561564716}
   - component: {fileID: 6721181767022409207}
-  - component: {fileID: 6841176765694782737}
+  - component: {fileID: 2159178032268682252}
   m_Layer: 15
-  m_Name: MonsterMovementArea
+  m_Name: MonsterMoveArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
---- !u!114 &6841176765694782737
+--- !u!114 &2159178032268682252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,9 +88,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 38695629429389116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbf960b010c07e4b93d4a81a60dcde9, type: 3}
+  m_Script: {fileID: 11500000, guid: 896e3ae8a456e4f48978f4e5cf031fe7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovementArea
+  m_EditorClassIdentifier: Assembly-CSharp::MoveArea
   boundaryMargin: 0
   AreaGizmoColor: {r: 0, g: 1, b: 0, a: 0.1}
 --- !u!1 &132524841665357476
@@ -477,8 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48e5ad82d0b65f42b250bf01ad01a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  <PlayerMovementArea>k__BackingField: {fileID: 3774830911894565271}
-  <MonsterMovementArea>k__BackingField: {fileID: 6841176765694782737}
+  <PlayerMovementArea>k__BackingField: {fileID: 3149079606652166930}
+  <MonsterMovementArea>k__BackingField: {fileID: 2159178032268682252}
   <MonsterSpawnTransformGroups>k__BackingField: {fileID: 1966073416716009849}
 --- !u!1 &4607052205834898438
 GameObject:
@@ -552,9 +552,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7475641183374682349}
   - component: {fileID: 3047108063242583731}
-  - component: {fileID: 3774830911894565271}
+  - component: {fileID: 3149079606652166930}
   m_Layer: 15
-  m_Name: PlayerMovementArea
+  m_Name: PlayerMoveArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,7 +621,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 6, y: 10}
   m_EdgeRadius: 0
---- !u!114 &3774830911894565271
+--- !u!114 &3149079606652166930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -630,9 +630,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5751891426158753961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbf960b010c07e4b93d4a81a60dcde9, type: 3}
+  m_Script: {fileID: 11500000, guid: 896e3ae8a456e4f48978f4e5cf031fe7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovementArea
+  m_EditorClassIdentifier: Assembly-CSharp::MoveArea
   boundaryMargin: 0
   AreaGizmoColor: {r: 0, g: 1, b: 0, a: 0.1}
 --- !u!1 &6153764466146414563

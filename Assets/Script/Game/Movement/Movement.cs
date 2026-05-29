@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private bool moveLock = false;
 
-    private MovementArea movementArea;
+    private MoveArea movementArea;
 
     float MoveSpeed
     {
@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     {
         this.direction = direction;
     }
-    public void SetArea(MovementArea area)
+    public void SetArea(MoveArea area)
     {
         movementArea = area;
     }

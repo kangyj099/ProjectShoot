@@ -1,14 +1,39 @@
+using System;
 using UnityEngine;
+using Project.Movement;
+
+namespace Project.Movement
+{
+    // 이동 잠궈야하는 상황 추가될 때 여기에 enum 추가
+    [Flags]
+    public enum LockType
+    {
+        None = 0,
+        Dead = 1 << 0,
+    };
+};
 
 public class Movement : MonoBehaviour
 {
+
     [SerializeField] private bool isDebugLogOn = false;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Vector2 direction = Vector2.zero;
 
-    [SerializeField] private bool moveLock = false;
+    private LockType moveLock = LockType.None;
+    private LockType MoveLock { get => moveLock;
+        set
+        {
+            moveLock = value;
+
+#if UNITY_EDITOR
+            moveLockText = value.ToString();
+#endif
+        }
+    }
 
     private MoveArea movementArea;
+
 
     float MoveSpeed
     {
@@ -25,6 +50,16 @@ public class Movement : MonoBehaviour
         movementArea = area;
     }
 
+    public void SetLock(Project.Movement.LockType lockType)
+    {
+        MoveLock |= lockType;
+    }
+
+    public void RemoveLock(LockType lockType)
+    {
+        MoveLock &= ~lockType;
+    }
+
     private void Awake()
     {
         // Essential component Setup
@@ -38,12 +73,11 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void FixedUpdate()
     {
-        if (!moveLock)
+        if (MoveLock == LockType.None)
         {
             Move();
         }
@@ -63,4 +97,8 @@ public class Movement : MonoBehaviour
             transform.position = clampedPosition;
         }
     }
+
+
+    // 인스펙터 표기를 위한 값들
+    public string moveLockText = "None";
 }

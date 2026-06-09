@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class PoolExtentions
 {
-    public static void Release(this IPoolable poolable)
+    public static void Return(this IPoolable poolable)
     {
         if (poolable.Pool != null)
         {

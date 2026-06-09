@@ -49,7 +49,7 @@ public class ProjectileObject : BaseObject, IPoolable
 
     public void OnGet() => timer = 0f;
 
-    public void OnRelease()
+    public void OnReturn()
     {
         transform.DOKill(); // 모든 연산 강제 종료
 
@@ -78,7 +78,7 @@ public class ProjectileObject : BaseObject, IPoolable
         timer += Time.fixedDeltaTime;
         if (timer >= lifetime)
         {
-            this.Release();
+            this.Return();
         }
     }
 
@@ -111,7 +111,7 @@ public class ProjectileObject : BaseObject, IPoolable
             }
 
             // 총알 반환
-            this.Release();
+            this.Return();
         }
         else
         {

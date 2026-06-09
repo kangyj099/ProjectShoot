@@ -63,7 +63,7 @@ public class PoolManager : MonoBehaviour
             return false;
         }
 
-        poolable.Release();
+        poolable.Return();
 
         return true;
     }

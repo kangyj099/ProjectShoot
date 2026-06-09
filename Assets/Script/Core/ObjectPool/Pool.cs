@@ -20,7 +20,7 @@ public interface IPoolable
     /// <summary>
     /// 풀에 돌려놓을 때 실행할 동작
     /// </summary>
-    void OnRelease();
+    void OnReturn();
 }
 
 public interface IPool
@@ -82,7 +82,7 @@ public class Pool<T> : IPool where T : BaseObject, IPoolable
 
     private void OnRelease(T item)
     {
-        item.OnRelease();
+        item.OnReturn();
         item.gameObject.SetActive(false);
     }
 

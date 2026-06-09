@@ -30,7 +30,7 @@ public class TestPoolable : BaseObject, IPoolable
         Debug.Log("TestPoolable OnGet");
         gameObject.SetActive(true);
     }
-    public void OnRelease()
+    public void OnReturn()
     {
         Debug.Log("TestPoolable OnRelease");
         gameObject.SetActive(false);

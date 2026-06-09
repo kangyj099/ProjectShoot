@@ -1,7 +1,9 @@
-public class ActorIdleState : IActorState
+public class ActorIdleState : ActorStateBase
 {
-    public ActorState State => ActorState.Idle;
-    public void OnEnter() { }
-    public void OnUpdate() { }
-    public void OnExit() { }
+    public override ActorState State => ActorState.Idle;
+    public ActorIdleState(ActorController controller) : base(controller) { }
+
+    public override void OnEnter() { }
+    public override void OnUpdate() { }
+    public override void OnExit() { }
 }

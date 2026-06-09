@@ -1,8 +1,10 @@
-public class ActorMoveState : IActorState
+public class ActorMoveState : ActorStateBase
 {
-    public ActorState State => ActorState.Move;
+    public override ActorState State => ActorState.Move;
 
-    public void OnEnter() { }
-    public void OnUpdate() { }
-    public void OnExit() { }
+    public ActorMoveState(ActorController controller) : base(controller) { }
+
+    public override void OnEnter() { }
+    public override void OnUpdate() { }
+    public override void OnExit() { }
 }

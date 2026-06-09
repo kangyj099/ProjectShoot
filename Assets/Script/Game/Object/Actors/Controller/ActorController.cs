@@ -3,8 +3,9 @@ using UnityEngine;
 public class ActorController : MonoBehaviour
 {
     protected Movement movement;
-
     ActorStateMachine stateManager;
+
+    [SerializeField] protected ActorObject actorObject;
 
     void Awake()
     {
@@ -13,6 +14,12 @@ public class ActorController : MonoBehaviour
         // 상태머신 초기화
         stateManager = CreateStateManager();
         stateManager.Init();
+
+        if (actorObject == null)
+        {
+            Debug.LogError($"{gameObject.name} : ActorController의 actorObject가 할당되지 않았습니다.");
+        }
+        actorObject.SubscribeDeath(HandleDead);
 
         OnAwake();
     }

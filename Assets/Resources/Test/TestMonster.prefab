@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5300769225766412037}
   - component: {fileID: -7691174386540425574}
   - component: {fileID: 6718398923898218129}
+  - component: {fileID: -5568837029033412629}
   m_Layer: 9
   m_Name: TestMonster
   m_TagString: Untagged
@@ -132,6 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4835330430cc3f4c9639a5c8d263b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
+  <MaxHPCap>k__BackingField: 0
+  <MaxHP>k__BackingField: 0
+  <CurrentHP>k__BackingField: 0
 --- !u!61 &6718398923898218129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,3 +182,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5568837029033412629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325926599123549238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab7459878b0e834b90e8c185bc95f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorController
+  actorObject: {fileID: 5300769225766412037}

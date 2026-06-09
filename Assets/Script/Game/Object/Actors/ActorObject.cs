@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class ActorObject : BaseObject
@@ -24,5 +25,25 @@ public abstract class ActorObject : BaseObject
     public override void Release()
     {
         Destroy(gameObject);
+    }
+
+    public void SubscribeDeath(Action onDeadAction)
+    {
+        if (null == HP)
+        {
+            return;
+        }
+
+        HP.OnDead += onDeadAction;
+    }
+
+    public void UnsubscribeDeath(Action onDeadAction)
+    {
+        if (null == HP)
+        {
+            return;
+        }
+
+        HP.OnDead -= onDeadAction;
     }
 }

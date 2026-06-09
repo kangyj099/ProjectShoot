@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(BaseObject))]
@@ -5,6 +6,9 @@ using UnityEngine;
 public class Health : MonoBehaviour, ICollisionReceiver
 {
     private BaseObject owner;
+
+    public event Action OnDead;
+
     [field:SerializeField]
     public int MaxHPCap {  get; private set; }  // 피통 증가 상한
     [field: SerializeField]
@@ -39,10 +43,10 @@ public class Health : MonoBehaviour, ICollisionReceiver
     public void TakeDamage(int amount)
     {
         CurrentHP -= amount;
-        Debug.Log($"{gameObject.name}: {amount}대미지 피격, 현재 HP{CurrentHP}");
         if (CurrentHP < 0)
         {
             Debug.Log($"{gameObject.name} 사망");
+            OnDead?.Invoke();
         }
     }
 

@@ -4,7 +4,10 @@ public class ActorDieState : ActorStateBase
 
     public ActorDieState(ActorController controller) : base(controller) { }
 
-    public override void OnEnter() { }
+    public override void OnEnter()
+    {
+        Controller.StartDeathSequence().Forget();
+    }
     public override void OnUpdate() { }
     public override void OnExit() { }
 }

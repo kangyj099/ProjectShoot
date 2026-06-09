@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ActorController : MonoBehaviour
 {
     protected Movement movement;
@@ -42,4 +44,22 @@ public class ActorController : MonoBehaviour
         return new ActorStateMachine(this);
     }
 
+
+    // HP 0이 되었을 때 호출할 상태머신 변경 함수
+    private void HandleDead()
+    {
+        stateManager.ChangeState(ActorState.Die);
+    }
+
+    public async UniTaskVoid StartDeathSequence()
+    {
+        // 죽는 애니메이션 재생, 콜라이더 비활성화, 오브젝트 풀로 반환 등 죽는 시퀀스 처리
+        Debug.Log($"{gameObject.name}이(가) 사망했습니다.");
+
+        // TODO. 애니메이션 재생
+        await UniTask.Delay(1000); // 예시로 1초 대기 (애니메이션 재생 시간)
+
+        // BaseObject에서 반환하도록 함
+        actorObject.Release();
+    }
 }

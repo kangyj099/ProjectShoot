@@ -40,4 +40,11 @@ public abstract class BaseObject : MonoBehaviour
         HitInfo hitInfo = new HitInfo(collision, this, target);
         CollisionEntity.SendCollisionContext(in hitInfo); // 충돌 컨텍스트 생성 후 전송
     }
+
+    /// <summary>
+    /// 객체 사용 종료하고(비동기작업 종료, 이벤트 해제, 초기화 등)
+    /// 적절한 방식으로 제거
+    /// (풀객체는 풀 반환, 일반 객체는 파괴하도록 구현하기)
+    /// </summary>
+    public abstract void Release();
 }

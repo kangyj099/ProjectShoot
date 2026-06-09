@@ -24,6 +24,11 @@ public class TestPoolable : BaseObject, IPoolable
 
     }
 
+    public override void Release()
+    {
+        this.Return();
+    }
+
     // IPooledObject 인터페이스 구현
     public void OnGet()
     {

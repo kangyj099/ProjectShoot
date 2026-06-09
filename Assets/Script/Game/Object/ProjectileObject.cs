@@ -9,6 +9,13 @@ public class ProjectileObject : BaseObject, IPoolable
 
     public override ObjectType GetObjectType() => ObjectType.Projectile;
     public IPool Pool { get; set; }
+    public override void Release()
+    {
+        transform.DOKill(); // 모든 연산 강제 종료
+        behavior = null; // 추가 행동 초기화
+
+        this.Return();
+    }
 
     public float speed;
     public float damage;
@@ -49,12 +56,7 @@ public class ProjectileObject : BaseObject, IPoolable
 
     public void OnGet() => timer = 0f;
 
-    public void OnReturn()
-    {
-        transform.DOKill(); // 모든 연산 강제 종료
-
-        behavior = null; // 추가 행동 초기화
-    }
+    public void OnReturn() { }
 
     protected override void OnAwake()
     {
@@ -78,7 +80,7 @@ public class ProjectileObject : BaseObject, IPoolable
         timer += Time.fixedDeltaTime;
         if (timer >= lifetime)
         {
-            this.Return();
+            Release();
         }
     }
 
@@ -111,7 +113,7 @@ public class ProjectileObject : BaseObject, IPoolable
             }
 
             // 총알 반환
-            this.Return();
+            Release();
         }
         else
         {

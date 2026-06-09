@@ -45,4 +45,9 @@ public class MonsterObject : ActorObject
     {
         
     }
+
+    public override void Release()
+    {
+        Destroy(gameObject);
+    }
 }

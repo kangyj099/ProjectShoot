@@ -20,4 +20,9 @@ public abstract class ActorObject : BaseObject
             CollisionEntity.AddCollisionReceiver(HP);
         }
     }
+
+    public override void Release()
+    {
+        Destroy(gameObject);
+    }
 }

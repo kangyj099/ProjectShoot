@@ -5,17 +5,12 @@ using UnityEngine;
 public class ActorController : MonoBehaviour
 {
     protected Movement movement;
-    ActorStateMachine stateManager;
 
     [SerializeField] protected ActorObject actorObject;
 
     void Awake()
     {
         movement = gameObject.GetComponent<Movement>();
-
-        // 상태머신 초기화
-        stateManager = CreateStateManager();
-        stateManager.Init();
 
         if (actorObject == null)
         {
@@ -28,7 +23,7 @@ public class ActorController : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -37,18 +32,11 @@ public class ActorController : MonoBehaviour
 
     protected virtual void OnAwake() { }
 
-    // 상태머신 생성 함수
-    // 자식이 별도의 상태머신매니저를 사용할 경우 이 함수 override하기
-    protected virtual ActorStateMachine CreateStateManager()
-    {
-        return new ActorStateMachine(this);
-    }
-
 
     // HP 0이 되었을 때 호출할 상태머신 변경 함수
     private void HandleDead()
     {
-        stateManager.ChangeState(ActorState.Die);
+        StartDeathSequence().Forget();
     }
 
     public async UniTaskVoid StartDeathSequence()

@@ -46,6 +46,21 @@ public enum ActorState
     Count // enum 개수 세는 용도, 실제로는 사용하지 않음
 }
 
+/// <summary>
+/// 몬스터 행동 규칙
+/// </summary>
+public enum BehaviourType
+{
+    None = -1,
+    WaitSecond,     // 일정 시간 대기
+    MovePoint,      // 특정 지점으로 이동
+    MoveDirection,  // 특정 방향으로 (n초간)이동
+    AttackOn,       // 공격 켜기
+    AttackOff,      // 공격 끄기
+
+    Count // enum 개수 세는 용도, 실제로는 사용하지 않음
+}
+
 public enum ItemType
 {
 

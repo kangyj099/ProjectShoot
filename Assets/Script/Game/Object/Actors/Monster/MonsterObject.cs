@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterObject : ActorObject
 {
     public override ObjectType GetObjectType() => ObjectType.Monster;
+    protected MonsterController controller;
 
     SpriteRenderer spriteRenderer;
 
@@ -50,4 +51,11 @@ public class MonsterObject : ActorObject
     {
         Destroy(gameObject);
     }
+
+    public void BindController(MonsterController controller)
+    {
+        this.controller = controller;
+    }
+
+
 }

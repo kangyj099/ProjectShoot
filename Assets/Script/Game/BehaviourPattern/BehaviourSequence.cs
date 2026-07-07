@@ -9,10 +9,33 @@ public class BehaviourSequence
 {
     [SerializeField] private IBehaviourStep[] steps;
     [SerializeField] private IBehaviourStep currentStep;
-    private int currentStepIndex = -1;
+    public int CurrentStepIndex { get; private set; } = -1;
+    public string CurrentStepName => currentStep != null ? currentStep.GetType().Name : "None";
     public bool IsCompleted { get; set; } = false;
     protected bool IsReservedExit { get; set; } = false;
     public int StepCount => steps.Length;
+
+    //////////////////
+    ///For Test&Debug
+#if DEBUG
+    public void StepTest()
+    {
+        if (steps == null)
+        {
+            steps = new IBehaviourStep[5];
+            for (int i = 0; i < steps.Length; i++)
+            {
+                steps[i] = new WaitSecondStep(5.0f);
+            }
+
+            CurrentStepIndex = 0;
+            currentStep = steps[CurrentStepIndex];
+        }
+    }
+#endif
+    ///For Test&Debug
+    //////////////////
+
 
     public BehaviourSequence()
     {
@@ -21,8 +44,8 @@ public class BehaviourSequence
             return;
         }
         // 첫 스탭 시작(스텝 초기화 불필요하므로 Reset() 호출하지 않음)
-        currentStepIndex = 0;
-        currentStep = steps[currentStepIndex];
+        CurrentStepIndex = 0;
+        currentStep = steps[CurrentStepIndex];
     }
 
     public void Activate()
@@ -36,7 +59,7 @@ public class BehaviourSequence
 
     /// <summary>
     /// 다음 스탭으로 넘어감
-    /// (ReserveExit 호출, currentStepIndex 증가, currentSequence 변경)
+    /// (ReserveExit 호출, CurrentStepIndex 증가, currentSequence 변경)
     /// * IsCompleted가 true인 경우에만 호출되어야 함. 내부에서 확인 안 함
     /// </summary>
     private void NextStep()
@@ -46,15 +69,15 @@ public class BehaviourSequence
 
         currentStep.Exit();
 
-        currentStepIndex++;
-        if (currentStepIndex >= steps.Length)
+        CurrentStepIndex++;
+        if (CurrentStepIndex >= steps.Length)
         {
             currentStep = null; // 루프가 아닌 시퀀스인 경우에 스탭 종료
             IsCompleted = true;
             return;
         }
 
-        currentStep = steps[currentStepIndex];
+        currentStep = steps[CurrentStepIndex];
         currentStep.Enter();
     }
 
@@ -90,7 +113,7 @@ public class BehaviourSequence
         {
             currentStep.Exit();
             currentStep = null;
-            currentStepIndex = -1;
+            CurrentStepIndex = -1;
         }
     }
 
@@ -102,7 +125,7 @@ public class BehaviourSequence
         }
         IsReservedExit = false;
         IsCompleted = false;
-        currentStepIndex = 0;
-        currentStep = steps[currentStepIndex];
+        CurrentStepIndex = 0;
+        currentStep = steps[CurrentStepIndex];
     }
 }

@@ -15,6 +15,27 @@ public class BehaviourPattern : MonoBehaviour
     [SerializeField] private BehaviourSequence currentSequence;
     [SerializeField] private int reserveSequenceIdx = -1;
 
+    //////////////////
+    ///For Test&Debug
+#if DEBUG
+    public int CurrentSequenceIndex => (sequence != null ? System.Array.IndexOf(sequence, currentSequence) : -1);
+    public string CurrentStepName => (currentSequence != null ? currentSequence.CurrentStepName : "None");
+    public int CurrentStepIndex => (currentSequence != null ? currentSequence.CurrentStepIndex : -1);
+
+    public void StepTest()
+    {
+        if (null == sequence || sequence.Length <= 0)
+        {
+            sequence = new BehaviourSequence[1];
+            sequence[0] = new BehaviourSequence();
+            sequence[0].StepTest();
+        }
+    }
+#endif
+    ///For Test&Debug
+    //////////////////
+
+
     private void Awake()    // 오브젝트 최초 활성화시 동작
     {
         if (sequence != null)

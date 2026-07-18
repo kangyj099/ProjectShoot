@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 394645985}
   - component: {fileID: 394645989}
   - component: {fileID: 394645988}
-  - component: {fileID: 394645990}
   - component: {fileID: 394645987}
   m_Layer: 0
   m_Name: TestMonster
@@ -318,7 +317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterController
   actorObject: {fileID: 394645987}
-  behaviourPattern: {fileID: 0}
 --- !u!114 &394645989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,22 +333,6 @@ MonoBehaviour:
   moveSpeed: 5
   direction: {x: 0, y: 0}
   moveLockText: None
---- !u!114 &394645990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394645984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24e8349fb4238654fa7d73bea0e02df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BehaviourPattern
-  actor: {fileID: 394645988}
-  isBasicLoop: 1
-  sequence: []
-  reserveSequenceIdx: 0
 --- !u!1 &465355233
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   monsterBehaveText: {fileID: 465355235}
-  monsterBehaviour: {fileID: 394645990}
+  monsterController: {fileID: 394645988}
 --- !u!4 &1687247011
 Transform:
   m_ObjectHideFlags: 0

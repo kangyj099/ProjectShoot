@@ -14,6 +14,7 @@ public class PlayerController : ActorController
             Debug.LogError($"Movement component not found on {gameObject.name}.\n{gameObject} 객체에 Movement컴포넌트가 없습니다.");
         }
     }
+
     void Start()
     {
         

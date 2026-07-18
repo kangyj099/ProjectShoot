@@ -28,9 +28,11 @@ public class ActorController : MonoBehaviour
 
     void Update()
     {
+        OnUpdate();
     }
 
     protected virtual void OnAwake() { }
+    protected virtual void OnUpdate() { }
 
 
     // HP 0이 되었을 때 호출할 상태머신 변경 함수

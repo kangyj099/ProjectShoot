@@ -1,0 +1,24 @@
+using UnityEngine;
+
+public class WaitBehaviourStep : BehaviourStep
+{
+    public override string Name => "대기";
+    public override BehaviourType Type => BehaviourType.WaitSecond;
+    // 대기 시간
+    public float Duration { get; set; }
+
+    public override void Start(BehaviourPatternRunner runner) { }
+
+    public void Begin(BehaviourPatternRunner runner)
+    {
+        runner.IsStepComplete = false;
+    }
+    protected override void OnExecute(BehaviourPatternRunner runner)
+    {
+
+    }
+    public override bool CheckStepComplete(BehaviourPatternRunner runner)
+    {
+        return runner.StepElapsedTime >= Duration;
+    }
+}

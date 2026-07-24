@@ -2,6 +2,24 @@ using UnityEngine;
 
 public class BehaviourPatternSO : ScriptableObject
 {
+#if DEBUG
+    public void TestSet()
+    {
+        Name = "테스트 패턴";
+        sequences = new BehaviourSequence[1];
+        sequences[0] = new BehaviourSequence();
+        BasicSequences.TestSet();
+    }
+
+    public string GetSequenceName(int idx)
+    {
+        if (sequences == null || sequences.Length <= idx)
+        {
+            return null;
+        }
+        return sequences[idx].Name;
+    }
+#endif
     public string Name { get; private set; }
 
     BehaviourSequence[] sequences;

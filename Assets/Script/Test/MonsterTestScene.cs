@@ -1,11 +1,10 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterTestScene : MonoBehaviour
 {
     private const string behaviorText = "Step: {0}\r\nSequence: {1}\r\nStepIdx: {2}";
-    
+
     public TextMeshProUGUI monsterBehaveText;
     public MonsterController monsterController;
     BehaviourPatternRunner behaviorPatternRunner;
@@ -15,6 +14,7 @@ public class MonsterTestScene : MonoBehaviour
         if (monsterController)
         {
             behaviorPatternRunner = monsterController.GetRunner();
+            behaviorPatternRunner.TestRun();
         }
 
         if (monsterBehaveText != null)
@@ -28,7 +28,7 @@ public class MonsterTestScene : MonoBehaviour
     {
         if (monsterBehaveText != null && behaviorPatternRunner != null)
         {
-            monsterBehaveText.text = string.Format(behaviorText, ' ', behaviorPatternRunner.SequenceIndex, behaviorPatternRunner.StepIndex);
+            monsterBehaveText.text = string.Format(behaviorText, behaviorPatternRunner.GetCurStepName, behaviorPatternRunner.GetCurSeqName, behaviorPatternRunner.StepIndex);
         }
     }
 }

@@ -83,6 +83,8 @@ public class BehaviourPatternRunner
             StepIndex = 0;
         }
 
+        currentStep.Stop(this);
+
         currentStep = PickCurrentStep();
 
         StepReady();

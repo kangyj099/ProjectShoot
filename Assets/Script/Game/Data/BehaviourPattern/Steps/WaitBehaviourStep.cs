@@ -7,9 +7,7 @@ public class WaitBehaviourStep : BehaviourStep
     // 대기 시간
     public float Duration { get; set; }
 
-    public override void Start(BehaviourPatternRunner runner) { }
-
-    public void Begin(BehaviourPatternRunner runner)
+    public override void Start(BehaviourPatternRunner runner)
     {
         runner.IsStepComplete = false;
     }

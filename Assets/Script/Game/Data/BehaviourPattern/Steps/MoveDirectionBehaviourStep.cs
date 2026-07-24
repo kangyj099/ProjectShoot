@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveDirectionBehaviourStep :BehaviourStep
+public class MoveDirectionBehaviourStep : BehaviourStep
 {
     public override string Name => "방향 이동";
     public override BehaviourType Type => BehaviourType.MoveDirection;
@@ -9,9 +9,7 @@ public class MoveDirectionBehaviourStep :BehaviourStep
     // 이동 방향
     public Vector2 Direction { get; set; }
 
-    public override void Start(BehaviourPatternRunner runner) { }
-
-    public void Begin(BehaviourPatternRunner runner)
+    public override void Start(BehaviourPatternRunner runner)
     {
         runner.SetDirection(Direction);
     }

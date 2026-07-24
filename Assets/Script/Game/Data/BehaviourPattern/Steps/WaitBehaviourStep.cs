@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class WaitBehaviourStep : BehaviourStep
 {
     public override string Name => "대기";

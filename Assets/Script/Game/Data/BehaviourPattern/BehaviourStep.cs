@@ -1,5 +1,3 @@
-using UnityEngine;
-
 // TODO. 스탭 데이터 런타임에 수정 불가하게 set private로 잠그기
 // 편집기 데이터 밀어넣기를 위해서 임시값 경유 클래스 제작 후 Copy 함수 호출하여 값 넣기
 // (SerializeField로 해결되면 그렇게 하기)

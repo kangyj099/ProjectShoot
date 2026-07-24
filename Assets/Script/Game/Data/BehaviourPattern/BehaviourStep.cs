@@ -36,7 +36,7 @@ public abstract class BehaviourStep : IBehaviourStep
     public virtual void Execute(BehaviourPatternRunner runner)
     {
         OnExecute(runner);
-        CheckStepComplete(runner);
+        runner.IsStepComplete = CheckStepComplete(runner);
     }
 
     // 스텝별 수행시킬 동작을 구현

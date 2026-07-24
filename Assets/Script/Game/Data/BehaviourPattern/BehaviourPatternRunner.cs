@@ -11,7 +11,7 @@ public class BehaviourPatternRunner
     public bool IsStepComplete { get; set; }
 
     private IBehaviourStep currentStep = null;
-    private IBehaviourStep GetCurrentStep => pattern?.GetStep(SequenceIndex, StepIndex);
+    private IBehaviourStep PickCurrentStep() => pattern?.GetStep(SequenceIndex, StepIndex);
 
     public Action<Vector2> SetDirection { get; private set; }
 
@@ -62,7 +62,7 @@ public class BehaviourPatternRunner
     private void NextStep()
     {
         StepIndex++;
-        currentStep = GetCurrentStep;
+        currentStep = PickCurrentStep();
 
         StepReady();
         currentStep?.Start(this);

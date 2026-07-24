@@ -23,7 +23,9 @@ public class BehaviourPatternSO : ScriptableObject
     public string Name { get; private set; }
 
     BehaviourSequence[] sequences;
-    public BehaviourSequence BasicSequences => sequences[0];
+    public BehaviourSequence BasicSequences => sequences[BehaviourConst.BASIC_SEQUENCE_INDEX];
+    bool isBasicLoop = true;
+    public bool IsBasicLoop { get => isBasicLoop; private set { isBasicLoop = value; } }
     public IBehaviourStep GetStep(int sequenceIndex, int stepIndex)
     {
         if (sequenceIndex < 0 || sequenceIndex >= sequences.Length)

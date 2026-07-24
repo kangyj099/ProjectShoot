@@ -49,6 +49,11 @@ public enum ActorState
 /// <summary>
 /// 몬스터 행동 규칙
 /// </summary>
+public static class BehaviourConst
+{
+    public const int BASIC_SEQUENCE_INDEX = 0;
+}
+
 public enum BehaviourType
 {
     None = -1,

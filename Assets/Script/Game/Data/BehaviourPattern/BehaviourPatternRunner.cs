@@ -75,6 +75,14 @@ public class BehaviourPatternRunner
     private void NextStep()
     {
         StepIndex++;
+        // 루프 시퀀스인 경우 인덱스 끝까지 갔을 때 초기화함
+        if (SequenceIndex == BehaviourConst.BASIC_SEQUENCE_INDEX
+            && pattern.BasicSequences.StepCount <= StepIndex
+            && true == pattern?.IsBasicLoop)
+        {
+            StepIndex = 0;
+        }
+
         currentStep = PickCurrentStep();
 
         StepReady();

@@ -3,7 +3,7 @@ using UnityEngine;
 public class BehaviourSequence
 {
     public string Name { get; private set; }
-    public int StepCount { get; private set; }
+    public int StepCount => steps.Length;
     public int CurrentStepIndex { get; private set; }
 
     IBehaviourStep[] steps;

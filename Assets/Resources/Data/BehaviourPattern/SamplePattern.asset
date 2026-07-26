@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e4cdccbc744444d88277877249beff, type: 3}
+  m_Name: SamplePattern
+  m_EditorClassIdentifier: Assembly-CSharp::BehaviourPatternSO
+  sequences:
+  - steps:
+    - rid: 4200706769638916165
+    - rid: 4200706767724216401
+    - rid: 4200706767724216399
+    - rid: 4200706767724216402
+  references:
+    version: 2
+    RefIds:
+    - rid: 4200706767724216399
+      type: {class: MoveDirectionBehaviourStep, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        direction: {x: 1, y: 1}
+    - rid: 4200706767724216401
+      type: {class: WaitBehaviourStep, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+    - rid: 4200706767724216402
+      type: {class: WaitBehaviourStep, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+    - rid: 4200706769638916165
+      type: {class: MoveDirectionBehaviourStep, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 1
+        direction: {x: -1, y: -1}

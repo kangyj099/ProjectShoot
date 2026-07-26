@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class MonsterController : ActorController
 {
     BehaviourPatternRunner runner;
+    [SerializeField] BehaviourPatternSO behaviourPatternData;
 
     protected override void OnAwake()
     {
@@ -18,6 +20,10 @@ public class MonsterController : ActorController
         // 행동패턴 실행기 초기화
         runner = new BehaviourPatternRunner();
         runner.BindingMovement(movement);
+        if (behaviourPatternData)
+        {
+            runner.SetPattern(behaviourPatternData);
+        }
     }
 
     protected override void OnUpdate()

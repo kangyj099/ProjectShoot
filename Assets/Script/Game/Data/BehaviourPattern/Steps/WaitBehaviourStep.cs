@@ -3,7 +3,7 @@ public class WaitBehaviourStep : BehaviourStep
     public override string Name => "대기";
     public override BehaviourType Type => BehaviourType.WaitSecond;
     // 대기 시간
-    public float Duration { get; set; }
+    float duration = 0.0f;
 
     public override void Start(BehaviourPatternRunner runner)
     {
@@ -15,6 +15,6 @@ public class WaitBehaviourStep : BehaviourStep
     }
     public override bool CheckStepComplete(BehaviourPatternRunner runner)
     {
-        return runner.StepElapsedTime >= Duration;
+        return runner.StepElapsedTime >= duration;
     }
 }

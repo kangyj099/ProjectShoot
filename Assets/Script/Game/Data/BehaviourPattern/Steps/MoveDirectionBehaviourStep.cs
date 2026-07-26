@@ -5,9 +5,11 @@ public class MoveDirectionBehaviourStep : BehaviourStep
     public override string Name => "방향 이동";
     public override BehaviourType Type => BehaviourType.MoveDirection;
     // 이동시간
-    public float Duration { get; set; }
+    float duration = 0.0f;
     // 이동 방향
-    public Vector2 Direction { get; set; }
+    Vector2 direction;
+    // 이동 방향 노말 (편집기에서 넣은 수치를 실제 게임에서 사용할 normal벡터로 변환)
+    public Vector2 Direction { get => direction.normalized; }
 
     public override void Start(BehaviourPatternRunner runner)
     {
@@ -19,7 +21,7 @@ public class MoveDirectionBehaviourStep : BehaviourStep
     }
     public override bool CheckStepComplete(BehaviourPatternRunner runner)
     {
-        return runner.StepElapsedTime >= Duration;
+        return runner.StepElapsedTime >= duration;
     }
 
     public override void Stop(BehaviourPatternRunner runner)

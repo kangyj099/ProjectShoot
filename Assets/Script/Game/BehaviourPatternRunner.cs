@@ -6,14 +6,6 @@ public class BehaviourPatternRunner
 #if DEBUG
     public string GetCurSeqName => pattern.GetSequenceName(SequenceIndex);
     public string GetCurStepName => currentStep.Name;
-    public void TestRun()
-    {
-        pattern = new BehaviourPatternSO();
-        pattern.TestSet();
-        SequenceIndex = 0;
-        StepIndex = 0;
-        currentStep = PickCurrentStep();
-    }
 #endif
 
     private const int INVALID_INDEX = -1;
@@ -40,6 +32,9 @@ public class BehaviourPatternRunner
     public void SetPattern(BehaviourPatternSO pattern)
     {
         this.pattern = pattern;
+        SequenceIndex = 0;
+        StepIndex = 0;
+        currentStep = PickCurrentStep();
     }
     #endregion
 

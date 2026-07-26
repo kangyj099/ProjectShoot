@@ -14,7 +14,6 @@ public class MonsterTestScene : MonoBehaviour
         if (monsterController)
         {
             behaviorPatternRunner = monsterController.GetRunner();
-            behaviorPatternRunner.TestRun();
         }
 
         if (monsterBehaveText != null)

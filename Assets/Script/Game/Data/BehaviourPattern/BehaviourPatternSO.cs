@@ -3,14 +3,6 @@ using UnityEngine;
 public class BehaviourPatternSO : ScriptableObject
 {
 #if DEBUG
-    public void TestSet()
-    {
-        Name = "테스트 패턴";
-        sequences = new BehaviourSequence[1];
-        sequences[0] = new BehaviourSequence();
-        BasicSequences.TestSet();
-    }
-
     public string GetSequenceName(int idx)
     {
         if (sequences == null || sequences.Length <= idx)

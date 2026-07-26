@@ -5,9 +5,9 @@ public class MoveDirectionBehaviourStep : BehaviourStep
     public override string Name => "방향 이동";
     public override BehaviourType Type => BehaviourType.MoveDirection;
     // 이동시간
-    float duration = 0.0f;
+    [SerializeField] float duration = 0.0f;
     // 이동 방향
-    Vector2 direction;
+    [SerializeField] Vector2 direction;
     // 이동 방향 노말 (편집기에서 넣은 수치를 실제 게임에서 사용할 normal벡터로 변환)
     public Vector2 Direction { get => direction.normalized; }
 

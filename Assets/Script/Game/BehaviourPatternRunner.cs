@@ -30,7 +30,7 @@ public class BehaviourPatternRunner
     // 시간
     private float stepStartTime;
     public float StepStuckElapsed { get; set; } = 0.0f;
-    public float StepElapsedTime => Time.time - stepStartTime;
+    public float StepElapsed => Time.time - stepStartTime;
 
     public void BindingObject(GameObject obj)
     {

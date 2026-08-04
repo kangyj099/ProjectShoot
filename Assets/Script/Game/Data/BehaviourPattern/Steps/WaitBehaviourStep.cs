@@ -18,6 +18,6 @@ public class WaitBehaviourStep : BehaviourStep
     }
     public override bool CheckStepComplete(BehaviourPatternRunner runner)
     {
-        return runner.StepElapsedTime >= duration;
+        return runner.StepElapsed >= duration;
     }
 }

@@ -22,7 +22,7 @@ public class MoveDirectionBehaviourStep : BehaviourStep
     }
     public override bool CheckStepComplete(BehaviourPatternRunner runner)
     {
-        return runner.StepElapsedTime >= duration;
+        return runner.StepElapsed >= duration;
     }
 
     public override void Stop(BehaviourPatternRunner runner)

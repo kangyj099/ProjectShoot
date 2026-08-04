@@ -4,6 +4,7 @@ public class MoveDirectionBehaviourStep : BehaviourStep
 {
     public override string Name => "방향 이동";
     public override BehaviourType Type => BehaviourType.MoveDirection;
+    public override bool IsFixedStep => false;
     // 이동시간
     [SerializeField] float duration = 0.0f;
     // 이동 방향

@@ -34,6 +34,14 @@ public class MonsterController : ActorController
         }
     }
 
+    protected override void OnFixedUpdate()
+    {
+        if (runner != null)
+        {
+            runner.FixedUpdate();
+        }
+    }
+
 #if DEBUG
     public BehaviourPatternRunner GetRunner()
     {

@@ -42,13 +42,25 @@ public class BehaviourPatternRunner
     {
         if (currentStep == null)
             return;
-
-        currentStep.Execute(this);
+        if (!currentStep.IsFixedStep)
+        {
+            currentStep.Execute(this);
+        }
 
         if (IsStepComplete)
         {
             NextStep();
         }
+    }
+
+    public void FixedUpdate()
+    {
+        if (currentStep.IsFixedStep)
+        {
+            currentStep.Execute(this);
+        }
+
+        lastPos = GetPosition();
     }
 
     public void Reset()

@@ -19,6 +19,7 @@ public class MonsterController : ActorController
 
         // 행동패턴 실행기 초기화
         runner = new BehaviourPatternRunner();
+        runner.BindingObject(gameObject);
         runner.BindingMovement(movement);
         if (behaviourPatternData)
         {
@@ -31,6 +32,14 @@ public class MonsterController : ActorController
         if (runner != null)
         {
             runner.Update();
+        }
+    }
+
+    protected override void OnFixedUpdate()
+    {
+        if (runner != null)
+        {
+            runner.FixedUpdate();
         }
     }
 

@@ -21,7 +21,9 @@ public static class BehaviourPatternEditorFactory
                 }
                 break;
             case MovePoint:      // 특정 지점으로 이동
-                { }
+                {
+                    return new MovePointBehaviourStep();
+                }
                 break;
             case MoveDirection:  // 특정 방향으로 (n초간)이동
                 {

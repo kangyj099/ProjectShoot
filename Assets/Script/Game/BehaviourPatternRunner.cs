@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+// Todo. Step별로 바인딩 필수인 것들이 있음.
+// 필수적인 바인딩 안 하고 Step호출할 때 에러 띄우기
 
 public class BehaviourPatternRunner
 {
@@ -18,15 +20,28 @@ public class BehaviourPatternRunner
     private IBehaviourStep currentStep = null;
     private IBehaviourStep PickCurrentStep() => pattern?.GetStep(SequenceIndex, StepIndex);
 
+    // 이동
+    public Func<Vector2> GetPosition { get; private set; }
     public Action<Vector2> SetDirection { get; private set; }
+    public Action<Vector3> TeleportPosition { get; private set; }
+    private Vector2 lastPos = Vector2.zero;
+    public Vector2 LastPos => lastPos;
 
+    // 시간
     private float stepStartTime;
-    public float StepElapsedTime => Time.time - stepStartTime;
+    public float StepStuckElapsed { get; set; } = 0.0f;
+    public float StepElapsed => Time.time - stepStartTime;
 
+    public void BindingObject(GameObject obj)
+    {
+        GetPosition = () => obj.transform.position;
+        lastPos = GetPosition();
+    }
     #region 정보값 바인딩
     public void BindingMovement(Movement movement)
     {
         SetDirection = movement.SetDirection;
+        TeleportPosition = movement.TeleportPosition;
     }
 
     public void SetPattern(BehaviourPatternSO pattern)
@@ -42,13 +57,25 @@ public class BehaviourPatternRunner
     {
         if (currentStep == null)
             return;
-
-        currentStep.Execute(this);
+        if (!currentStep.IsFixedStep)
+        {
+            currentStep.Execute(this);
+        }
 
         if (IsStepComplete)
         {
             NextStep();
         }
+    }
+
+    public void FixedUpdate()
+    {
+        if (currentStep.IsFixedStep)
+        {
+            currentStep.Execute(this);
+        }
+
+        lastPos = GetPosition();
     }
 
     public void Reset()
@@ -59,11 +86,13 @@ public class BehaviourPatternRunner
         StepIndex = INVALID_INDEX;
 
         stepStartTime = Time.time;
+        StepStuckElapsed = 0.0f;
     }
 
     private void StepReady()
     {
         stepStartTime = Time.time;
+        StepStuckElapsed = 0.0f;
         IsStepComplete = false;
     }
 

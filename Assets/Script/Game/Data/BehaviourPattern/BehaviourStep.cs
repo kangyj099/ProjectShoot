@@ -9,6 +9,7 @@ public interface IBehaviourStep
 {
     string Name { get; }
     BehaviourType Type { get; }
+    bool IsFixedStep { get; }   // true면 FixedUpdate에서 실행, false면 Update에서 실행
     // 스탭 동작에 필요한 초기값 주입
     void Start(BehaviourPatternRunner runner);
     // 스탭 동작 수행시킴
@@ -30,6 +31,7 @@ public abstract class BehaviourStep : IBehaviourStep
 {
     public abstract string Name { get; }
     public abstract BehaviourType Type { get; }
+    public abstract bool IsFixedStep { get; }
     public abstract void Start(BehaviourPatternRunner runner);
     public virtual void Execute(BehaviourPatternRunner runner)
     {

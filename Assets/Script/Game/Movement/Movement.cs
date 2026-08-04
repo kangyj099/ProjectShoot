@@ -89,6 +89,12 @@ public class Movement : MonoBehaviour
         AreaClamp();
     }
 
+    public void TeleportPosition(Vector3 position)
+    {
+        transform.position = position;
+        AreaClamp();
+    }
+
     private void AreaClamp()
     {
         if (movementArea != null)

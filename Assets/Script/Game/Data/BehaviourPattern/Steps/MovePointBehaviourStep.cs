@@ -49,6 +49,7 @@ public class MovePointBehaviourStep : BehaviourStep
          이 경우 거리계산식 기반으로 변경 필요 */
         if (Vector2.Dot(CurPosToDest, LastPosToDest) <= 0)
         {
+            runner.TeleportPosition(Destination);
             return true;
         }
 

@@ -23,6 +23,7 @@ public class BehaviourPatternRunner
     // 이동
     public Func<Vector2> GetPosition { get; private set; }
     public Action<Vector2> SetDirection { get; private set; }
+    public Action<Vector3> TeleportPosition { get; private set; }
     private Vector2 lastPos = Vector2.zero;
     public Vector2 LastPos => lastPos;
 
@@ -40,6 +41,7 @@ public class BehaviourPatternRunner
     public void BindingMovement(Movement movement)
     {
         SetDirection = movement.SetDirection;
+        TeleportPosition = movement.TeleportPosition;
     }
 
     public void SetPattern(BehaviourPatternSO pattern)

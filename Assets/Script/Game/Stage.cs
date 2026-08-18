@@ -8,4 +8,5 @@ public class Stage : MonoBehaviour
     public MoveArea MonsterMovementArea { get; private set; }
     [field: SerializeField]
     public SpawnTransformGroups MonsterSpawnTransformGroups { get; private set; }
+    public MonsterGroupSO MonsterWaveData;
 }

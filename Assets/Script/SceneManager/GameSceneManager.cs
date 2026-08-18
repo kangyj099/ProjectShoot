@@ -73,6 +73,6 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         currentStage = stage;
 
         playerInstance?.SetMovementArea(currentStage.PlayerMovementArea);
-        monsterSpawner.SetTransformGroups(currentStage.MonsterSpawnTransformGroups);
+        monsterSpawner.SetStage(currentStage);
     }
 }

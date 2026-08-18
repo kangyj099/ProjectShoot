@@ -4,7 +4,7 @@ using UnityEngine;
 public class MonsterController : ActorController
 {
     BehaviourPatternRunner runner;
-    [SerializeField] BehaviourPatternSO behaviourPatternData;
+    BehaviourPatternSO behaviourPatternData;
 
     public void SetBehaviourPattern(BehaviourPatternSO patternData)
     {

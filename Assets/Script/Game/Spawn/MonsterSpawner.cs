@@ -7,18 +7,15 @@ public class MonsterSpawner : MonoBehaviour
     // 몬스터를 스폰할 스폰 위치 그룹을 선택함
     // 스폰 위치 그룹 안에 있는 Transform중 랜덤한 하나 선택해 스폰 몬스터의 초기 위치, 각도를 세팅함
     public SpawnTransformGroups SpawnTransformGroups { get; private set; }
-
     private ObjectSpawner objectSpawner;
+    public MonsterGroupSO MonsterWaveData { get; private set; }
+    public BehaviourPatternSO testBehaviourPattern;
 
-    public void SetTransformGroups(SpawnTransformGroups spawnTransformGroups)
+    public void SetStage(Stage stage)
     {
-        SpawnTransformGroups = spawnTransformGroups;
+        SpawnTransformGroups = stage.MonsterSpawnTransformGroups;
+        MonsterWaveData = stage.MonsterWaveData;
         Debug.Log($"몬스터 스포너 시작: {SpawnTransformGroups.GroupCount}개의 스폰 위치 그룹이 설정됨");
-    }
-
-    public void SetMonsterSpawnData()
-    {
-
     }
 
     void Start()

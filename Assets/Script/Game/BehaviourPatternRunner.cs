@@ -50,6 +50,7 @@ public class BehaviourPatternRunner
         SequenceIndex = 0;
         StepIndex = 0;
         currentStep = PickCurrentStep();
+        stepStartTime = Time.time;
     }
     #endregion
 

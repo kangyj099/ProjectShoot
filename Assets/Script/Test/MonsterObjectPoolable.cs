@@ -11,12 +11,10 @@ public class MonsterObjectPoolable : MonsterObject, IPoolable
     // BaseObject 추상 메서드 구현
     public override void SetData(ObjectData data)
     {
-        Debug.Log("TestObjectData Initialize");
-
         MonsterObjectData monsterData = data as MonsterObjectData;
         if (monsterData == null)
         {
-            Debug.LogError("오브젝트 세팅을 위한 데이터가 필요합니다.");
+            Debug.LogError("오브젝트 세팅을 위한 몬스터 데이터가 필요합니다.");
             return;
         }
     }
@@ -30,12 +28,10 @@ public class MonsterObjectPoolable : MonsterObject, IPoolable
     // IPooledObject 인터페이스 구현
     public void OnGet()
     {
-        Debug.Log("TestPoolable OnGet");
         gameObject.SetActive(true);
     }
     public void OnReturn()
     {
-        Debug.Log("TestPoolable OnRelease");
         gameObject.SetActive(false);
     }
 

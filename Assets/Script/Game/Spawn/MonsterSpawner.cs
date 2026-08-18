@@ -11,6 +11,10 @@ public class MonsterSpawner : MonoBehaviour
     public MonsterGroupSO MonsterWaveData { get; private set; }
     public BehaviourPatternSO testBehaviourPattern;
 
+    //TEST
+    float tick = 3.1f;
+    //TEST
+
     public void SetStage(Stage stage)
     {
         SpawnTransformGroups = stage.MonsterSpawnTransformGroups;
@@ -21,6 +25,42 @@ public class MonsterSpawner : MonoBehaviour
     void Start()
     {
         objectSpawner = GameSceneManager.Instance.Spawner;
+    }
+
+    void Update()
+    {
+        tick += Time.deltaTime;
+        if (tick < 3.0f)
+        {
+            return;
+        }
+
+        tick = 0.0f;
+
+        int posGroupIndex = Random.Range(0, SpawnTransformGroups.GroupCount);
+        Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
+        if (spawnTransform == null)
+        {
+            Debug.LogError($"몬스터 {MonsterWaveData.name} 스폰 실패: 몬스터 스폰 위치 그룹 {posGroupIndex}에 유효한 스폰 위치가 없음");
+        }
+
+        Vector3 offset = Vector3.zero;
+        foreach (var monsterData in MonsterWaveData.monsterList)
+        {
+            Vector3 position = spawnTransform.position + offset;
+            Debug.Log($"몬스터 {monsterData.name} 스폰 위치: {spawnTransform.position}");
+            SpawnMonster(monsterData, position, spawnTransform.rotation, testBehaviourPattern).Forget();
+
+            // 중심 몬스터 주변에 일정 간격만큼 떨어진 곳에 소환
+            if (offset.x < 0)
+            {
+                offset *= -1;
+            }
+            else
+            {
+                offset = -offset + Vector3.left * 1.5f;
+            }
+        }
     }
 
     public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null, BehaviourPatternSO behaviourPattern = null)

@@ -6,6 +6,15 @@ public class MonsterController : ActorController
     BehaviourPatternRunner runner;
     [SerializeField] BehaviourPatternSO behaviourPatternData;
 
+    public void SetBehaviourPattern(BehaviourPatternSO patternData)
+    {
+        behaviourPatternData = patternData;
+        if (runner != null)
+        {
+            runner.SetPattern(patternData);
+        }
+    }
+
     protected override void OnAwake()
     {
         if (actorObject is MonsterObject monsterObject)

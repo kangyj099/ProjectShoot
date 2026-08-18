@@ -6,6 +6,7 @@ public class MonsterObject : ActorObject
 {
     public override ObjectType GetObjectType() => ObjectType.Monster;
     protected MonsterController controller;
+    public MonsterController Controller => controller;
 
     SpriteRenderer spriteRenderer;
 

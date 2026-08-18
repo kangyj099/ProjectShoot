@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 5265367631249034430}
   - component: {fileID: 268611548484578570}
   - component: {fileID: 6407159100669886846}
-  - component: {fileID: 5300769225766412037}
-  - component: {fileID: -7691174386540425574}
   - component: {fileID: 6718398923898218129}
-  - component: {fileID: -5568837029033412629}
+  - component: {fileID: -4932053432533136040}
+  - component: {fileID: -5418927390987390802}
+  - component: {fileID: 4825679016361758748}
+  - component: {fileID: -3015234822292816944}
   m_Layer: 9
-  m_Name: TestMonster
+  m_Name: SampleMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,33 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectID
   uniqueId: ad94fbe2-c70c-45f1-b8b2-f70d618fcf16
---- !u!114 &5300769225766412037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325926599123549238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae4c0f49f25b4b439c7d993b2e8fcba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterObject
---- !u!114 &-7691174386540425574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325926599123549238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4835330430cc3f4c9639a5c8d263b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  <MaxHPCap>k__BackingField: 0
-  <MaxHP>k__BackingField: 0
-  <CurrentHP>k__BackingField: 0
 --- !u!61 &6718398923898218129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,7 +156,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-5568837029033412629
+--- !u!114 &-4932053432533136040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +165,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 325926599123549238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab7459878b0e834b90e8c185bc95f0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 87cce2f6ed4604c42bd4afad99618462, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActorController
-  actorObject: {fileID: 5300769225766412037}
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterController
+  actorObject: {fileID: 4825679016361758748}
+--- !u!114 &-5418927390987390802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325926599123549238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b725a4befdefbf540aabd533dcf6f8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  isDebugLogOn: 0
+  moveSpeed: 5
+  direction: {x: 0, y: 0}
+  moveLockText: None
+--- !u!114 &4825679016361758748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325926599123549238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdb13c84a1b5cd45b89942fc48d0002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestPoolableMonster
+--- !u!114 &-3015234822292816944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325926599123549238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4835330430cc3f4c9639a5c8d263b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  <MaxHPCap>k__BackingField: 0
+  <MaxHP>k__BackingField: 0
+  <CurrentHP>k__BackingField: 0

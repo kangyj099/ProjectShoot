@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class TestPoolable : BaseObject, IPoolable
+public class MonsterObjectPoolable : MonsterObject, IPoolable
 {
     public override ObjectType GetObjectType() => ObjectType.None;
 
@@ -13,19 +13,17 @@ public class TestPoolable : BaseObject, IPoolable
     {
         Debug.Log("TestObjectData Initialize");
 
-        TestObjectData testData = data as TestObjectData;
-        if (testData == null)
+        MonsterObjectData monsterData = data as MonsterObjectData;
+        if (monsterData == null)
         {
             Debug.LogError("오브젝트 세팅을 위한 데이터가 필요합니다.");
             return;
         }
-
-        SpriteRenderer.sprite = testData.sprite;
-
     }
 
     public override void Release()
     {
+        Controller.SetBehaviourPattern(null);
         this.Return();
     }
 

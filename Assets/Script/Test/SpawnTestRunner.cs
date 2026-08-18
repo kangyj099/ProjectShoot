@@ -11,11 +11,11 @@ public class SpawnTestRunner : MonoBehaviour
 
     public TestObjectData testObjectData;
 
-    public List<TestPoolable> activeObjects = new();
+    public List<MonsterObjectPoolable> activeObjects = new();
 
     public async void GetObject()
     {
-        var obj =  poolManager.Get<TestPoolable>(testObjectData);
+        var obj =  poolManager.Get<MonsterObjectPoolable>(testObjectData);
         activeObjects.Add(obj);
     }
 

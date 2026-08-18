@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9eb4cc0f74c66464ca58e3af61eb9f48, type: 3}
-  m_Name: TestMonsterData
+  m_Name: SampleMonsterData
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
-  prefab: {fileID: 5300769225766412037, guid: 1aa58a217c47f1848a21851af2aa96dc, type: 3}
+  prefab: {fileID: 4825679016361758748, guid: 1aa58a217c47f1848a21851af2aa96dc, type: 3}
   <Sprite>k__BackingField: {fileID: -6141113305616064862, guid: d9075fa8692500c4891f1af63c426f32, type: 3}
   <MaxHp>k__BackingField: 0

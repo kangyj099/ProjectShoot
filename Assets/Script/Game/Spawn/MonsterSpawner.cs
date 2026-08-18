@@ -26,7 +26,7 @@ public class MonsterSpawner : MonoBehaviour
         objectSpawner = GameSceneManager.Instance.Spawner;
     }
 
-    public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, BehaviourPatternSO behaviourPattern, int posGroupIndex)
+    public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, int posGroupIndex, BehaviourPatternSO behaviourPattern = null)
     {
         Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
         if (spawnTransform == null)
@@ -41,7 +41,7 @@ public class MonsterSpawner : MonoBehaviour
         return monster;
     }
 
-    public async UniTask<MonsterObject> SpawnNonPoolMonster(MonsterObjectData monsterPrefab, BehaviourPatternSO behaviourPattern, int posGroupIndex)
+    public async UniTask<MonsterObject> SpawnNonPoolMonster(MonsterObjectData monsterPrefab, int posGroupIndex, BehaviourPatternSO behaviourPattern = null)
     {
         Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
         if (spawnTransform == null)

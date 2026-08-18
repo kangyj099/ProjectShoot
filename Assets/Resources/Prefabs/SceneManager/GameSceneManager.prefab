@@ -84,6 +84,9 @@ MonoBehaviour:
   currentStage: {fileID: 7853665455017358895}
   playerSpawnTransform: {fileID: 7046918459209662827}
   monsterSpawner: {fileID: 904220573345644074}
+  tick: 0
+  testMonsterPrefabs: {fileID: 0}
+  testBehaviourPatternSO: {fileID: 0}
 --- !u!114 &2573690661088601451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81a3f3fcc41abc45a6449c73b709664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterSpawner
-  testMonsterPrefabs: {fileID: 11400000, guid: 0d9bd2e1a797daf418b4eaabb7945bc7, type: 2}
+  monsterWaveData: {fileID: 11400000, guid: 854c2e53716c84f44bcd0610bbd96f83, type: 2}
+  testBehaviourPattern: {fileID: 11400000, guid: b35fc6d23eb268540a30d4aca91ce664, type: 2}
 --- !u!1 &9008208626670959106
 GameObject:
   m_ObjectHideFlags: 0

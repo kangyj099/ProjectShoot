@@ -26,33 +26,34 @@ public class MonsterSpawner : MonoBehaviour
         objectSpawner = GameSceneManager.Instance.Spawner;
     }
 
-    public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, int posGroupIndex, BehaviourPatternSO behaviourPattern = null)
+    public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null, BehaviourPatternSO behaviourPattern = null)
     {
-        Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
-        if (spawnTransform == null)
+        if (rotation == null)
         {
-            Debug.LogError($"몬스터 {monsterPrefab.name} 스폰 실패: 몬스터 스폰 위치 그룹 {posGroupIndex}에 유효한 스폰 위치가 없음");
-
-            return null;
+            rotation = Quaternion.identity;
         }
 
-        var monster = await objectSpawner.SpawnPoolObject(monsterPrefab, spawnTransform.position, spawnTransform.rotation) as MonsterObject;
-        monster.Controller.SetBehaviourPattern(behaviourPattern);
+
+        var monster = await objectSpawner.SpawnPoolObject(monsterPrefab, position, rotation.Value) as MonsterObject;
+        if (behaviourPattern != null)
+        {
+            monster.Controller.SetBehaviourPattern(behaviourPattern);
+        }
         return monster;
     }
 
-    public async UniTask<MonsterObject> SpawnNonPoolMonster(MonsterObjectData monsterPrefab, int posGroupIndex, BehaviourPatternSO behaviourPattern = null)
+    public async UniTask<MonsterObject> SpawnNonPoolMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null, BehaviourPatternSO behaviourPattern = null)
     {
-        Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
-        if (spawnTransform == null)
+        if (rotation == null)
         {
-            Debug.LogError($"몬스터 {monsterPrefab.name} 스폰 실패: 몬스터 스폰 위치 그룹 {posGroupIndex}에 유효한 스폰 위치가 없음");
-
-            return null;
+            rotation = Quaternion.identity;
         }
 
-        var monster = await objectSpawner.SpawnObject(monsterPrefab, spawnTransform.position, spawnTransform.rotation, null) as MonsterObject;
-        monster.Controller.SetBehaviourPattern(behaviourPattern);
+        var monster = await objectSpawner.SpawnObject(monsterPrefab, position, rotation.Value, null) as MonsterObject;
+        if (behaviourPattern != null)
+        {
+            monster.Controller.SetBehaviourPattern(behaviourPattern);
+        }
         return monster;
     }
 }

@@ -8,7 +8,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
     [SerializeField] private ObjectData playerObjectData;
     [SerializeField] private Stage currentStage;
     [SerializeField] private Transform playerSpawnTransform;
-    [SerializeField] private MonsterSpawner monsterSpawner;
+    [SerializeField] private MonsterSpawnRunner monsterSpawner;
     public PoolManager PoolManager { get; private set; }
     public ObjectSpawner Spawner { get; private set; }
 

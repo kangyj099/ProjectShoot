@@ -9,4 +9,5 @@ public class MonsterGroupSO : ScriptableObject
     /// ※ 0번이 "대장"
     /// </summary>
     public List<MonsterObjectData> monsterList = new List<MonsterObjectData>();
+    public int MonsterCount => monsterList?.Count ?? 0;
 }

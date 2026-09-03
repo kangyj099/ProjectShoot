@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7108e946ca25eec4d95e42b255c4cb38, type: 3}
+  m_Name: SampleStageWavesData
+  m_EditorClassIdentifier: Assembly-CSharp::StageMonsterWavesSO
+  monsterWaves:
+  - triggerTime: 0
+    monsterGroup: {fileID: 11400000, guid: 854c2e53716c84f44bcd0610bbd96f83, type: 2}
+    pattern: {fileID: 11400000, guid: b35fc6d23eb268540a30d4aca91ce664, type: 2}
+    formation: {fileID: 1368889292965590856, guid: 4f4655709af77bf4e9747283ad45151c, type: 3}
+  - triggerTime: 3
+    monsterGroup: {fileID: 11400000, guid: 854c2e53716c84f44bcd0610bbd96f83, type: 2}
+    pattern: {fileID: 11400000, guid: b35fc6d23eb268540a30d4aca91ce664, type: 2}
+    formation: {fileID: 1368889292965590856, guid: 4f4655709af77bf4e9747283ad45151c, type: 3}
+  - triggerTime: 9
+    monsterGroup: {fileID: 11400000, guid: 854c2e53716c84f44bcd0610bbd96f83, type: 2}
+    pattern: {fileID: 11400000, guid: b35fc6d23eb268540a30d4aca91ce664, type: 2}
+    formation: {fileID: 1368889292965590856, guid: 4f4655709af77bf4e9747283ad45151c, type: 3}
+  - triggerTime: 15
+    monsterGroup: {fileID: 11400000, guid: 854c2e53716c84f44bcd0610bbd96f83, type: 2}
+    pattern: {fileID: 11400000, guid: b35fc6d23eb268540a30d4aca91ce664, type: 2}
+    formation: {fileID: 1368889292965590856, guid: 4f4655709af77bf4e9747283ad45151c, type: 3}

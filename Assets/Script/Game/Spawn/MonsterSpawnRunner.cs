@@ -43,13 +43,13 @@ public class MonsterSpawnRunner : MonoBehaviour
             if (stageRunTick >= nextWave.triggerTime)
             {
                 Debug.Log($"몬스터 웨이브 소환: {nextWaveIndex}번째 웨이브, triggerTime={nextWave.triggerTime}");
-                SpawnMonsterWave(nextWave.monsterGroup, nextWave.pattern).Forget();
+                SpawnMonsterWave(nextWave.monsterGroup, nextWave.pattern, nextWave.formation).Forget();
                 nextWaveIndex++;
             }
         }
     }
 
-    public async UniTaskVoid SpawnMonsterWave(MonsterGroupSO monsterGroup, BehaviourPatternSO behaviourPattern)
+    public async UniTaskVoid SpawnMonsterWave(MonsterGroupSO monsterGroup, BehaviourPatternSO behaviourPattern, SpawnFormation spawnFormation)
     {
         int posGroupIndex = Random.Range(0, SpawnTransformGroups.GroupCount);
         Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
@@ -59,27 +59,18 @@ public class MonsterSpawnRunner : MonoBehaviour
             return;
         }
 
-        Vector3 offset = Vector3.zero;
         // 그룹 내 몬스터 모두 소환 후 동시에 active
         List<MonsterObject> monsters = new List<MonsterObject>(monsterGroup.monsterList.Count);
-        foreach (var monsterData in monsterGroup.monsterList)
+        
+        for (int i = 0; i < monsterGroup.monsterList.Count; i++)
         {
-            Vector3 position = spawnTransform.position + offset;
+            var monsterData = monsterGroup.monsterList[i];
+            Vector3 position = spawnTransform.position + spawnFormation.Positions[i];
 
             //몹 비활성화로 담아두기
             var monster = await SpawnMonster(monsterData, position, spawnTransform.rotation, behaviourPattern);
             monsters.Add(monster);
             monster.gameObject.SetActive(false);
-
-            // 중심 몬스터 주변에 일정 간격만큼 떨어진 곳에 소환
-            if (offset.x < 0)
-            {
-                offset *= -1;
-            }
-            else
-            {
-                offset = -offset + Vector3.left * 1.5f;
-            }
         }
 
         // 모든 몬스터 소환 후 동시에 활성화

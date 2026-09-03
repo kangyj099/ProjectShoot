@@ -18,14 +18,19 @@ MonoBehaviour:
     - rid: 4200706767724216401
     - rid: 4200706767724216399
     - rid: 4200706767724216402
+    - rid: 15160152529043525
   references:
     version: 2
     RefIds:
+    - rid: 15160152529043525
+      type: {class: MovePointBehaviourStep, ns: , asm: Assembly-CSharp}
+      data:
+        destination: {x: 0, y: 1}
     - rid: 4200706767724216399
       type: {class: MoveDirectionBehaviourStep, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
-        direction: {x: 1, y: 1}
+        direction: {x: 1, y: -3}
     - rid: 4200706767724216401
       type: {class: WaitBehaviourStep, ns: , asm: Assembly-CSharp}
       data:
@@ -38,4 +43,4 @@ MonoBehaviour:
       type: {class: MoveDirectionBehaviourStep, ns: , asm: Assembly-CSharp}
       data:
         duration: 1
-        direction: {x: -1, y: -1}
+        direction: {x: -5, y: 2}

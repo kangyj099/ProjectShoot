@@ -340,6 +340,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465355233}
   m_CullTransparentMesh: 1
+--- !u!1 &530971703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4059143656968828348, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
+  m_PrefabInstance: {fileID: 1478453671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &530971706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530971703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a1e1e4b7b399a4db1bd726b77b463e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterSpawnRunner
+--- !u!114 &622587636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1780588218434905127, guid: 3302b1309d48f1349a659ff93406fb9a, type: 3}
+  m_PrefabInstance: {fileID: 1983993355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48e5ad82d0b65f42b250bf01ad01a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &1478453671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,10 +383,18 @@ PrefabInstance:
     - target: {fileID: 1744669511926054380, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
       propertyPath: currentStage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 622587636}
+    - target: {fileID: 1744669511926054380, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
+      propertyPath: monsterSpawner
+      value: 
+      objectReference: {fileID: 530971706}
     - target: {fileID: 1744669511926054380, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
       propertyPath: playerSpawnTransform
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059143656968828348, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
+      propertyPath: m_Name
+      value: MonsterSpawnRunner
       objectReference: {fileID: 0}
     - target: {fileID: 6768180646367775317, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
       propertyPath: m_LocalPosition.x
@@ -408,7 +444,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 904220573345644074, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1053124371378481664, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
     - {fileID: 1042212657821814107, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
@@ -416,8 +453,102 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6768180646367775317, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1983993356}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4059143656968828348, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 530971706}
   m_SourcePrefab: {fileID: 100100000, guid: b3331be6f74705f4db861ccc1d819513, type: 3}
+--- !u!1 &1614566667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614566669}
+  - component: {fileID: 1614566668}
+  m_Layer: 0
+  m_Name: Triangle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1614566668
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614566667}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Color: {r: 1, g: 0.1834474, b: 0.051886797, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &1614566669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614566667}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.05, y: 0.93, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687247009
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +603,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 455323288}
     m_Modifications:
+    - target: {fileID: 1780588218434905127, guid: 3302b1309d48f1349a659ff93406fb9a, type: 3}
+      propertyPath: <MonsterWavesData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 13e3d3af9917c7a4dab03787665e3996, type: 2}
     - target: {fileID: 3148720223359424384, guid: 3302b1309d48f1349a659ff93406fb9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -845,3 +980,4 @@ SceneRoots:
   - {fileID: 1687247011}
   - {fileID: 1988336743}
   - {fileID: 1478453671}
+  - {fileID: 1614566669}

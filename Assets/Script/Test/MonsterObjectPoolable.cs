@@ -21,7 +21,6 @@ public class MonsterObjectPoolable : MonsterObject, IPoolable
 
     public override void Release()
     {
-        Controller.SetBehaviourPattern(null);
         this.Return();
     }
 

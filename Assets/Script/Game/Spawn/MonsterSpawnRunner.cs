@@ -43,13 +43,13 @@ public class MonsterSpawnRunner : MonoBehaviour
             if (stageRunTick >= nextWave.triggerTime)
             {
                 Debug.Log($"몬스터 웨이브 소환: {nextWaveIndex}번째 웨이브, triggerTime={nextWave.triggerTime}");
-                SpawnMonsterWave(nextWave.monsterGroup, nextWave.pattern, nextWave.formation).Forget();
+                SpawnMonsterWave(nextWave.monsterGroup, nextWave.formation).Forget();
                 nextWaveIndex++;
             }
         }
     }
 
-    public async UniTaskVoid SpawnMonsterWave(MonsterGroupSO monsterGroup, BehaviourPatternSO behaviourPattern, SpawnFormation spawnFormation)
+    public async UniTaskVoid SpawnMonsterWave(MonsterGroupSO monsterGroup, SpawnFormation spawnFormation)
     {
         int posGroupIndex = Random.Range(0, SpawnTransformGroups.GroupCount);
         Transform spawnTransform = SpawnTransformGroups.GetRandomTransform(posGroupIndex);
@@ -68,7 +68,7 @@ public class MonsterSpawnRunner : MonoBehaviour
             Vector3 position = spawnTransform.position + spawnFormation.Positions[i];
 
             //몹 비활성화로 담아두기
-            var monster = await SpawnMonster(monsterData, position, spawnTransform.rotation, behaviourPattern);
+            var monster = await SpawnMonster(monsterData, position, spawnTransform.rotation);
             monsters.Add(monster);
             monster.gameObject.SetActive(false);
         }
@@ -80,19 +80,15 @@ public class MonsterSpawnRunner : MonoBehaviour
         }
     }
 
-    public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null, BehaviourPatternSO behaviourPattern = null)
+    public async UniTask<MonsterObject> SpawnMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null)
     {
         var rot = rotation ?? Quaternion.identity;
 
         var monster = await objectSpawner.SpawnPoolObject(monsterPrefab, position, rot) as MonsterObject;
-        if (behaviourPattern != null)
-        {
-            monster.Controller.SetBehaviourPattern(behaviourPattern);
-        }
         return monster;
     }
 
-    public async UniTask<MonsterObject> SpawnNonPoolMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null, BehaviourPatternSO behaviourPattern = null)
+    public async UniTask<MonsterObject> SpawnNonPoolMonster(MonsterObjectData monsterPrefab, Vector3 position, Quaternion? rotation = null)
     {
         if (rotation == null)
         {
@@ -100,10 +96,6 @@ public class MonsterSpawnRunner : MonoBehaviour
         }
 
         var monster = await objectSpawner.SpawnObject(monsterPrefab, position, rotation.Value, null) as MonsterObject;
-        if (behaviourPattern != null)
-        {
-            monster.Controller.SetBehaviourPattern(behaviourPattern);
-        }
         return monster;
     }
 }

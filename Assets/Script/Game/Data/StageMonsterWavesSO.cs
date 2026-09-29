@@ -6,7 +6,6 @@ public struct MonsterWave
 {
     public float triggerTime;
     public MonsterGroupSO monsterGroup;
-    public BehaviourPatternSO pattern;
     public SpawnFormation formation;
 }
 

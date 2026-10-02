@@ -43,7 +43,7 @@ public class Health : MonoBehaviour, ICollisionReceiver
     public void TakeDamage(int amount)
     {
         CurrentHP -= amount;
-        if (CurrentHP < 0)
+        if (CurrentHP <= 0)
         {
             Debug.Log($"{gameObject.name} 사망");
             OnDead?.Invoke();
